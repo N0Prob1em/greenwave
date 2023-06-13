@@ -1,0 +1,32 @@
+debug: true
+server:
+  port:
+    error:
+      include-message: always
+spring:
+  sql:
+
+  output:
+    ansi:
+      enabled: always
+
+  datasource:
+    driver-class-name:
+    url: jdbc:postgresql://db.nwybeuabycyiazyoohqr.supabase.co:5432/postgres
+    username: postgres
+    password: vyH2a7EV#zAzahw
+
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          create_namespaces: true
+        ddl-auto: update
+    generate-ddl: true
+
+logging:
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure: ERROR
