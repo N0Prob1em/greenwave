@@ -27,6 +27,9 @@ function PostsPage() {
 
   const postList = posts.map(post => <PostCard key={post.id} post={post} />);
 
+  //for testing multiple components add to list
+  //const postList = [<PostCard key={posts[0].id} post={posts[0]}, ]
+
   return <div className="row">{postList}</div>;
 }
 
