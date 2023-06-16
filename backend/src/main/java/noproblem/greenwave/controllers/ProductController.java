@@ -21,7 +21,6 @@ public class ProductController {
 
     @GetMapping("/gallery")
     public ResponseEntity<List<Product>> getAll() {
-        System.out.println(productService.getAll().get(0));
         return ResponseEntity.ok(productService.getAll());
     }
 }
