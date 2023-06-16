@@ -1,0 +1,33 @@
+import { useEffect, useState } from 'react';
+import PostsApi from '../../api/PostsApi';
+import PostCard from './PostCard';
+import './PostsPage.css';
+
+
+export interface IProduct {
+  id: string;
+  title: string;
+  description: string;
+  imageUrl: string
+  dateAdded: string
+}
+
+function PostsPage() {
+  const initialProducts: IProduct[] = []
+  const [posts , setPosts] = useState(initialProducts);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await PostsApi.getAllPosts();
+      console.log(response.data);
+      setPosts(response.data);
+    };
+    fetchPosts();
+  }, []);
+
+  const postList = posts.map(post => <PostCard key={post.id} post={post} />);
+
+  return <div className="row">{postList}</div>;
+}
+
+export default PostsPage;
