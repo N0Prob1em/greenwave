@@ -1,0 +1,12 @@
+.Product {
+    width: 0;
+}
+
+.Product__img-container {
+    
+}
+
+.Product__img {
+    width: 15em;
+    height: 15em;
+}
