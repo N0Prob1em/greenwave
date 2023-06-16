@@ -1,20 +1,26 @@
 //import React from "react";
 import './Navbar.css';
-import Searchbar from "../Searchbar/Searchbar";
+import logo from '../../assets/logo-no-background.png';
 
 const Navbar = () => {
   return (
     <>
-      <div className="navbar">
-        <div className="title">GreenWave</div>
+      <div className="top-navbar">
+        <div className="title">
+          <img className="logo" src={logo} alt="" />
+        </div>
 
-        <ul>
-          <li><a className="active" href="#home">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <Searchbar/>
+        <div className="searchbar">
+          <input className="bar" type="text" placeholder="Search" />
+        </div>
+      </div>
+
+      <div className="bottom-navbar">
+        <p>Home</p>
+        <p>Phones</p>
+        <p>Food</p>
+        <p>Cars</p>
+        <p>Jobs</p>
       </div>
     </>
   )
