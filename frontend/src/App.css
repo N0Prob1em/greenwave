@@ -2,3 +2,10 @@
   padding: 0;
   margin: 0;
 }
+
+.Product__div {
+  margin: 1em;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15em, 1fr));
+  grid-gap: 1em
+}
