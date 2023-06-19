@@ -1,5 +1,5 @@
 import Navbar from './components/Navbar/Navbar'
-import PostsPage from './components/Posts/PostsPage'
+import PostsPage from './components/PostsPage/PostsPage'
 import './App.css'
 
 function App() {

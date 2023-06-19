@@ -1,5 +1,5 @@
 //import { Link } from 'react-router-dom';
-import imageUrl from '../images/iphone14.jpg'
+import imageUrl from '../../../assets/images/iphone14.jpg'
 
 export interface IProduct {
   post: {

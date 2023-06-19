@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import PostsApi from '../../api/PostsApi';
-import PostCard from './PostCard';
+import PostsApi from '../../api/Posts';
+import PostCard from './PostCard/PostCard';
 import './PostsPage.css';
 
 
@@ -28,7 +28,8 @@ function PostsPage() {
   const postList = posts.map(post => <PostCard key={post.id} post={post} />);
 
   //for testing multiple components add to list
-  //const postList = [<PostCard key={posts[0].id} post={posts[0]}, ]
+  //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
+
 
   return <div className="row">{postList}</div>;
 }

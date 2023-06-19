@@ -1,9 +1,9 @@
 import Api from './Api';
 
-class PostsApi {
+class Posts {
   getAllPosts() {
     return Api.get('/gallery');
   }
 }
 
-export default new PostsApi();
+export default new Posts();
