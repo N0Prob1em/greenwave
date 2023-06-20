@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PostsApi from '../../api/Posts';
-import PostCard from './PostCard/PostCard';
-import './PostsPage.css';
+import PostCard from './ProductCard/ProductCard';
+import './ProductsPage.css';
 
 
 export interface IProduct {
@@ -12,7 +12,7 @@ export interface IProduct {
   dateAdded: string
 }
 
-function PostsPage() {
+function ProductsPage() {
   const initialProducts: IProduct[] = []
   const [posts , setPosts] = useState(initialProducts);
 
@@ -34,4 +34,4 @@ function PostsPage() {
   return <div className="row">{postList}</div>;
 }
 
-export default PostsPage;
+export default ProductsPage;

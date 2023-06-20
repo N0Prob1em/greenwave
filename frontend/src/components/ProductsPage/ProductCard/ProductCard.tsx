@@ -11,7 +11,7 @@ export interface IProduct {
   }
 }
 
-function PostCard({ post }: IProduct) {
+function ProductCard({ post }: IProduct) {
   console.log("test", post.id);
   return (
     <div className="col-md-3 col-sm-6">
@@ -39,4 +39,4 @@ function PostCard({ post }: IProduct) {
   );
 }
 
-export default PostCard;
+export default ProductCard;
