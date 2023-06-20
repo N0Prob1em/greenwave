@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import PostsApi from '../../api/Posts';
-import PostCard from './ProductCard/ProductCard';
+import ProductsApi from '../../api/Products';
+import ProductCard from './ProductCard/ProductCard';
 import './ProductsPage.css';
 
 
@@ -14,24 +14,24 @@ export interface IProduct {
 
 function ProductsPage() {
   const initialProducts: IProduct[] = []
-  const [posts , setPosts] = useState(initialProducts);
+  const [products , setProducts] = useState(initialProducts);
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await PostsApi.getAllPosts();
+    const fetchProducts = async () => {
+      const response = await ProductsApi.getAllProducts();
       console.log(response.data);
-      setPosts(response.data);
+      setProducts(response.data);
     };
-    fetchPosts();
+    fetchProducts();
   }, []);
 
-  const postList = posts.map(post => <PostCard key={post.id} post={post} />);
+  const productList = products.map(product => <ProductCard key={product.id} product={product} />);
 
   //for testing multiple components add to list
   //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
 
 
-  return <div className="row">{postList}</div>;
+  return <div className="row">{productList}</div>;
 }
 
 export default ProductsPage;

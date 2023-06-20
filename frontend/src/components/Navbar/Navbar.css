@@ -35,6 +35,7 @@
 
 .bottom-navbar > p {
   font-weight: bold;
+  margin-bottom: 0;
 }
 
 /* Extra small devices (phones, 600px and down) */

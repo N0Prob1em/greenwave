@@ -2,7 +2,7 @@
 import imageUrl from '../../../assets/images/iphone14.jpg'
 
 export interface IProduct {
-  post: {
+  product: {
     id: string;
     title: string;
     description: string;
@@ -11,13 +11,13 @@ export interface IProduct {
   }
 }
 
-function ProductCard({ post }: IProduct) {
-  console.log("test", post.id);
+function ProductCard({ product }: IProduct) {
+  console.log("test", product.id);
   return (
     <div className="col-md-3 col-sm-6">
       <div className="product-grid4">
         <div className="product-image4">
-          <a href={post.id}>
+          <a href={product.id}>
             <img
               className= 'pic-1'
               src={imageUrl}
@@ -28,7 +28,7 @@ function ProductCard({ post }: IProduct) {
         </div>
         <div className="product-content">
           <h6 className="product-title">
-            <a href={post.title}>{post.title}</a>
+            <a href={product.title}>{product.title}</a>
           </h6>
           <button className="claim">
             View
