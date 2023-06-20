@@ -12,7 +12,6 @@ export interface IProduct {
 }
 
 function ProductCard({ product }: IProduct) {
-  console.log("test", product.id);
   return (
     <div className="col-md-3 col-sm-6">
       <div className="product-grid4">

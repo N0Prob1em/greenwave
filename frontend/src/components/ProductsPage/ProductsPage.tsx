@@ -19,7 +19,6 @@ function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await ProductsApi.getAllProducts();
-      console.log(response.data);
       setProducts(response.data);
     };
     fetchProducts();
