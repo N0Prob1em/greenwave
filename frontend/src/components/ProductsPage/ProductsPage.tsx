@@ -30,7 +30,7 @@ function ProductsPage() {
   //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
 
 
-  return <div className="row">{productList}</div>;
+  return <div className='flex flex-wrap p-3'>{productList}</div>;
 }
 
 export default ProductsPage;

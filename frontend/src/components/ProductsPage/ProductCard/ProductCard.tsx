@@ -13,8 +13,7 @@ export interface IProduct {
 
 function ProductCard({ product }: IProduct) {
   return (
-    <div className="col-md-3 col-sm-6">
-      <div className="product-grid4">
+    <div className="w-1/3 p-3">
         <div className="product-image4">
           <a href={product.id}>
             <img
@@ -23,17 +22,10 @@ function ProductCard({ product }: IProduct) {
               alt=""
             /> 
           </a>
-            <span className="product-new-label">Available</span>
         </div>
         <div className="product-content">
-          <h6 className="product-title">
-            <a href={product.title}>{product.title}</a>
-          </h6>
-          <button className="claim">
-            View
-          </button>
+          <a className='product-title font-bold' href={product.title}>{product.title}</a>
         </div>
-      </div>
     </div>
   );
 }
