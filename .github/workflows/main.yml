@@ -18,6 +18,11 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
+          
+      - name: Install doctl
+        run: |
+          curl -sL https://github.com/digitalocean/doctl/releases/latest/download/doctl-$(uname -s)-$(uname -m) | sudo tee /usr/local/bin/doctl > /dev/null
+          sudo chmod +x /usr/local/bin/doctl
 
       - name: Deploy to DigitalOcean
         run: |
