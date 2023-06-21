@@ -17,14 +17,10 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adopt'
-
-      - name: Build and package application
-        run: cd backend && mvn clean install
-        
+          distribution: 'adopt
 
       - name: Deploy to DigitalOcean
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          command: apps create --spec app.yaml
+          command: apps create --spec do.yaml
