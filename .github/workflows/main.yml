@@ -18,18 +18,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          
-          
-      - name: Create do.yml file
-        run: |
-          echo "name: my-spring-boot-app" >> do.yml
-          echo "services:" >> do.yml
-          echo "  - name: backend" >> do.yml
-          echo "    git:" >> do.yml
-          echo "      repo: https://github.com/N0Prob1em/greenwave.git" >> do.yml
-          echo "      branch: main" >> do.yml
-          echo "    build_command: mvn clean package" >> do.yml
-          echo "    run_command: java -jar target/my-spring-boot-app.jar" >> do.yml
 
       - name: Deploy to DigitalOcean
         uses: digitalocean/action-doctl@v2
