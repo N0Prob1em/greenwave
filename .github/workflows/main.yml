@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build and package application
-        run: cd backend && mvn clean package
+        run: cd backend && mvn clean install
         
 
       - name: Deploy to DigitalOcean
