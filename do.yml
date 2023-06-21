@@ -13,11 +13,11 @@ jobs:
           java-version: '17'
 services:
   - name: Build backend
-        run: |
-          cd backend
-          mvn clean package
+    run: |
+      cd backend
+      mvn clean package
 
-      - name: Run backend
-        run: |
-          cd backend
-          java -jar target/my-spring-boot-app.jar
+  - name: Run backend
+    run: |
+      cd backend
+      java -jar target/my-spring-boot-app.jar
