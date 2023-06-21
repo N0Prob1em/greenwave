@@ -1,8 +1,7 @@
 name: my-spring-boot-app
 services:
   - name: backend
-    git:
-      repo: https://github.com/N0Prob1em/greenwave.git
-      branch: main
+    repository: https://github.com/N0Prob1em/greenwave.git
+    branch: main
     build_command: mvn clean package
     run_command: java -jar target/my-spring-boot-app.jar
