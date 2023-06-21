@@ -1,6 +1,24 @@
 name: my-spring-boot-app
-services:
-  - name: backend
-    repository: https://github.com/N0Prob1em/greenwave.git
-    build_command: cd backend && mvn clean package
-    run_command: java -jar target/my-spring-boot-app.jar
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+
+      - name: Build backend
+        run: |
+          cd backend
+          mvn clean package
+
+      - name: Run backend
+        run: |
+          cd backend
+          java -jar target/my-spring-boot-app.jar
