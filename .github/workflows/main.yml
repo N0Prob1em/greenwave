@@ -8,21 +8,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    
-    - name: Set up Java
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-    
-    - name: Build and package application
-      run: mvn clean package
-    
-    - name: Deploy to DigitalOcean
-      uses: digitalocean/action-doctl@v2
-      with:
-        token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-        command: apps create --spec app.yaml
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build and package application
+        run: mvn clean package
+
+      - name: Deploy to DigitalOcean
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          command: apps create --spec app.yaml
