@@ -20,11 +20,9 @@ jobs:
           distribution: 'adopt'
           
       - name: Install doctl
-        run: |
-          curl -sL https://github.com/digitalocean/doctl/releases/latest/download/doctl-$(uname -s)-$(uname -m) | sudo tee /usr/local/bin/doctl > /dev/null
-          sudo chmod +x /usr/local/bin/doctl
-
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          
       - name: Deploy to DigitalOcean
-        run: |
-          doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          doctl apps create --spec ./do.yml
+        run: doctl apps create --spec ./do.yml
