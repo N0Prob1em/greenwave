@@ -23,4 +23,4 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          command: apps create ./do.yml
+          command: apps create --spec ./do.yml
