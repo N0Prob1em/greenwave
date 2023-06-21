@@ -1,6 +1,5 @@
 name: my-spring-boot-app
 app:
-  jobs:
   build:
     runs-on: ubuntu-latest
 
