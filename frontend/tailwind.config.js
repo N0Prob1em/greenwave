@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        'background': '#010536',
-        'accent': '#FFFF00',
-        'primary': '#FBFBF8'
+        'background': '#333333',
+        'accent': '#7FC37E',
+        'white': '#FFFFFF'
       },
       spacing: {
         'card': '330px',
