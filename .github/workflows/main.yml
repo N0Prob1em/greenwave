@@ -18,9 +18,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-          
-      - name: Set working directory
-        
 
       - name: Build and package application
         run: cd backend && mvn clean package
