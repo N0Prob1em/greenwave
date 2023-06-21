@@ -20,7 +20,6 @@ jobs:
           distribution: 'adopt'
 
       - name: Deploy to DigitalOcean
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-          app-spec: ./do.yml
+        run: |
+          doctl auth init --access-token ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          doctl apps create --spec ./do.yml
