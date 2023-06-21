@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
 
       - name: Build and package application
-        run: mvn clean package
+        run: mvn clean install
 
       - name: Deploy to DigitalOcean
         uses: digitalocean/action-doctl@v2
