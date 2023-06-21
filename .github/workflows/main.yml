@@ -20,10 +20,11 @@ jobs:
           distribution: 'adopt'
           
       - name: Set working directory
-        run: cd backend
+        
 
       - name: Build and package application
-        run: mvn clean package
+        run: cd backend && mvn clean package
+        
 
       - name: Deploy to DigitalOcean
         uses: digitalocean/action-doctl@v2
