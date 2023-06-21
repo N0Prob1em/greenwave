@@ -20,7 +20,7 @@ jobs:
           distribution: 'adopt'
           
       - name: Set working directory
-        run: cd /backend
+        run: cd backend
 
       - name: Build and package application
         run: mvn clean package
