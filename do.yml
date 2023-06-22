@@ -1,8 +1,6 @@
 name: my-spring-boot-app
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
+  - name: build-and-run
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -11,9 +9,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-services:
-  - name: backend
-    jobs:
+
       - name: Build backend
         run: |
           cd backend
