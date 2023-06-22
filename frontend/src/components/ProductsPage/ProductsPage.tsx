@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProductsApi from '../../api/Products';
 import ProductCard from './ProductCard/ProductCard';
 import './ProductsPage.css';
@@ -29,13 +29,8 @@ function ProductsPage() {
   //for testing multiple components add to list
   //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
 
-  return (
-    <div className='flex justify-center'>
-      <div className='flex flex-wrap laptop:w-3/5 p-3'>
-        {productList}
-      </div>
-    </div>
-  )
+
+  return <div className='flex flex-wrap p-3'>{productList}</div>;
 }
 
 export default ProductsPage;

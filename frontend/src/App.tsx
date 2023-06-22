@@ -6,8 +6,12 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <ProductsPage/>
+    <div className='flex justify-center'>
+      <div className='laptop:w-3/4 bg-white'>
+        <Navbar/>
+        <ProductsPage/>
+      </div>
+    </div>
     </>
   )
 }
