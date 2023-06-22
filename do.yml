@@ -1,16 +1,18 @@
-"name": "my-spring-boot-app",
-"services": [
-  {
-    "name": "backend",
-    "jobs": [
-      {
-        "name": "Build backend",
-        "command": "cd backend && mvn clean package"
-      },
-      {
-        "name": "Run backend",
-        "command": "cd backend && java -jar target/my-spring-boot-app.jar"
-      }
-    ]
-  }
-]
+{
+  "name": "my-spring-boot-app",
+  "services": [
+    {
+      "name": "backend",
+      "jobs": [
+        {
+          "name": "Build backend",
+          "command": "cd backend && mvn clean package"
+        },
+        {
+          "name": "Run backend",
+          "command": "cd backend && java -jar target/my-spring-boot-app.jar"
+        }
+      ]
+    }
+  ]
+}
