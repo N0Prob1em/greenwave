@@ -13,7 +13,7 @@ export interface IProduct {
 
 function ProductCard({ product }: IProduct) {
   return (
-    <div className="laptop:w-1/4 p-3 phone:w-full tablet:w-2/4">
+    <div className="laptop:w-1/3 p-3 phone:w-full tablet:w-1/2">
         <div className="product-image4">
           <a href={product.id}>
             <img

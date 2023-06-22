@@ -16,11 +16,13 @@ const Navbar = () => {
       </div>
 
       <div className="bottom-navbar">
-        <p>Home</p>
-        <p>Phones</p>
-        <p>Food</p>
-        <p>Cars</p>
-        <p>Jobs</p>
+        <div className='w-1/2 flex justify-center justify-between'>
+          <button>Home</button>
+          <button>Phones</button>
+          <button>Food</button>
+          <button>Cars</button>
+          <button>Jobs</button>
+        </div>
       </div>
     </>
   )
