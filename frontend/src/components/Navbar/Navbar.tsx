@@ -5,38 +5,46 @@ import logo from '../../assets/images/logo-no-background.png';
 
 const Navbar = () => {
   const navBar = useRef<HTMLDivElement>(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const bottomNav = useRef<HTMLDivElement>(null);
+  const [sticky, setSticky] = useState(false);
+  const [offset, setOffset] = useState(0);
+  
+  useEffect(() => {
+    if (!bottomNav.current) {
+      return;
+    }
+    setOffset(bottomNav.current.offsetTop);
+  }, [bottomNav, setOffset]);
 
   useEffect(() => {
-    const navbarStyle = navBar.current?.style;
-    const navbarPos = navBar.current?.getBoundingClientRect().top;
-
     const handleScroll = () => {
-      setScrollPosition(document.documentElement.scrollTop);
-    }
+      if (!bottomNav.current) {
+        return;
+      }
 
-    window.addEventListener("scroll", handleScroll);
+      setSticky(window.scrollY > offset);
 
-    if (scrollPosition > 0) {
-      navbarStyle!.fontSize = "0px";
-    } else {
-      navbarStyle!.backgroundColor = "";
-      
-    }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setSticky, bottomNav, offset]);
 
-    console.log();
-    
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    }
-  }, [scrollPosition])
+  if (sticky) {
+    bottomNav.current?.classList.add('fixed');
+    bottomNav.current?.classList.add('top-0');
+  } else {
+    bottomNav.current?.classList.remove('fixed');
+    bottomNav.current?.classList.remove('top-0');
+  }
+  console.log(sticky);
+  
 
-  console.log(scrollPosition);
+
 
   return (
     <>
-    <div className='sticky top-0'>
+    <div className='w-full'>
       <div className="top-navbar" ref={navBar}>
         <div className="title">
           <img className="logo" src={logo} alt="" />
@@ -47,7 +55,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="bottom-navbar">
+      <div className="bottom-navbar w-75" ref={bottomNav}>
         <button>Home</button>
         <button>Phones</button>
         <button>Food</button>
