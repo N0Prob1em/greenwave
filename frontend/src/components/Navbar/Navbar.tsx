@@ -1,5 +1,5 @@
 //import React from "react";
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './Navbar.css';
 import logo from '../../assets/images/logo-no-background.png';
 import AppBar from '@mui/material/AppBar';
@@ -14,7 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { styled } from '@mui/system';
 import React from 'react';
 

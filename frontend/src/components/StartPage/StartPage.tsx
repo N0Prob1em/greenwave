@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/Products';
 import ProductCard from '../ProductsPage/ProductCard/ProductCard';
 import Navbar from "../Navbar/Navbar"
