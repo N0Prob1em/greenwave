@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ProductsApi from '../../api/Products';
 import ProductCard from './ProductCard/ProductCard';
 import './ProductsPage.css';
+import Navbar from '../Navbar/Navbar';
 
 
 export interface IProduct {
@@ -29,8 +30,20 @@ function ProductsPage() {
   //for testing multiple components add to list
   //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
 
-
-  return <div className='flex flex-wrap p-3'>{productList}</div>;
+  return (
+    <>
+    <Navbar/>
+    <div className='p-3'>
+      <div className='text-xl'>
+        <h1 className='px-4'>All products</h1>
+      </div>
+      <div className='flex flex-wrap'>
+        {productList}
+      </div>
+    </div>
+    </>
+    
+  )
 }
 
 export default ProductsPage;
