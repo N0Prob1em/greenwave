@@ -1,5 +1,4 @@
 import Navbar from "../Navbar/Navbar";
-import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import imageUrl from '../../assets/images/iphone14.jpg'
