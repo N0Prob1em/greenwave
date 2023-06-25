@@ -16,8 +16,9 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
+const pages = ['products', 'pricing', 'blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledAppBar = styled(AppBar)`
@@ -98,7 +99,7 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Link to="/products"><Typography textAlign="center">{page}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -124,6 +125,7 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <Link to="/products">
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -131,6 +133,7 @@ const Navbar = () => {
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
