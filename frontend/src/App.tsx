@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import StartPage from './components/StartPage/StartPage';
 import ProductsPage from './components/ProductsPage/ProductsPage'
 import SingleProduct from './components/SingleProduct/SingleProduct'
@@ -10,13 +10,13 @@ function App() {
     <>
     <div className='flex justify-center'>
       <div className='laptop:w-3/4 bg-white phone:w-full'>
-        <HashRouter>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
           </Routes>
-        </HashRouter>
+        </BrowserRouter>
         </div>
     </div>
     </>

@@ -36,7 +36,7 @@ function ProductCard({ product }: IProduct) {
         </div>
         <div className="product-content bg-background p-6 rounded-b text-white">
           <a className='product-title font-bold text-2xl' href={product.title}>{product.title}</a>
-          <p className='pb-4'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p className='pb-4'>{product.description}</p>
           
           <div className='flex justify-between items-center'>
             <p>Posted by <b>Ariano</b></p>
