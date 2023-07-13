@@ -3,7 +3,6 @@ import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import imageUrl from '../../assets/images/iphone14.jpg'
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import ProductsApi from '../../api/Products';
 
 export interface IProduct {
