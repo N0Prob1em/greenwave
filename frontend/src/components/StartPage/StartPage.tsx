@@ -25,6 +25,7 @@ const ViewButton = styled(Button)`
 const StartPage = () => {
   const initialProducts: IProduct[] = []
   const [products , setProducts] = useState(initialProducts);
+  const [randomProduct , setRandomProduct] = useState<IProduct | null>(null);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,6 +34,15 @@ const StartPage = () => {
     };
     fetchProducts();
   }, []);
+
+  useEffect(() => {
+    const fetchRandomProduct = async () => {
+      const response = await ProductsApi.getRandomProduct();
+      setRandomProduct(response.data);
+    };
+
+    fetchRandomProduct();
+  }, [])  
 
   const productList = products.map(product => <ProductCard key={product.id} product={product} />);
 
@@ -46,11 +56,9 @@ const StartPage = () => {
           </div>
 
           <div className='w-2/3 text-white p-8'>
-            <p className='text-5xl font-bold'>Iphone 14 Pro</p>
+            <p className='text-5xl font-bold'>{randomProduct?.title}</p>
             <br />
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>{randomProduct?.description}</p>
             <br />
             <ViewButton>View</ViewButton>
           </div>
