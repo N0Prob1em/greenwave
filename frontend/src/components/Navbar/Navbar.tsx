@@ -14,7 +14,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Drawer from '@mui/material/Drawer';
 import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
