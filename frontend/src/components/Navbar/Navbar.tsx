@@ -18,7 +18,7 @@ import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const pages = ['products', 'pricing', 'blog'];
+const pages = ['home', 'all products', 'categories', 'about us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledAppBar = styled(AppBar)`
