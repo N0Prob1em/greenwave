@@ -25,7 +25,7 @@ const ViewButton = styled(Button)`
 const StartPage = () => {
   const initialProducts: IProduct[] = []
   const [products , setProducts] = useState(initialProducts);
-  const [randomProduct , setRandomProduct] = useState<IProduct | null>(null);
+  const [randomInt, setRandomInt] = useState(0);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -36,15 +36,17 @@ const StartPage = () => {
   }, []);
 
   useEffect(() => {
-    const fetchRandomProduct = async () => {
-      const response = await ProductsApi.getRandomProduct();
-      setRandomProduct(response.data);
+    const assignRandomInt = () => {
+      const x = Math.random()
+      setRandomInt(x);
     };
-
-    fetchRandomProduct();
-  }, [])  
+    assignRandomInt();
+    
+  }, []);
 
   const productList = products.map(product => <ProductCard key={product.id} product={product} />);
+  const randomProduct: IProduct = products[Math.floor(randomInt * products.length)];
+  
 
   return (
     <>

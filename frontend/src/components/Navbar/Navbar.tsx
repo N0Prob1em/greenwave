@@ -125,9 +125,8 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to="/products">
+              <Link to="/products" key={page}>
               <Button
-                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -140,7 +139,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src="green-wave-website-favicon-white.png" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -169,25 +168,6 @@ const Navbar = () => {
         </Toolbar>
       </Container>
     </StyledAppBar>
-    {/* <div className='w-full'>
-      <div className="top-navbar">
-        <div className="title">
-          <img className="logo" src={logo} alt="" />
-        </div>
-  
-        <div className="searchbar">
-          <input className="bar px-2 rounded" type="text" placeholder="Search" />
-        </div>
-      </div>
-
-      <div className="bottom-navbar">
-        <button>Home</button>
-        <button>Phones</button>
-        <button>Food</button>
-        <button>Cars</button>
-        <button>Jobs</button>
-      </div>
-    </div> */}
     </>
   )
 }
