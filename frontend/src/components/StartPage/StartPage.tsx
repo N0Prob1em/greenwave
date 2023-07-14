@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/Products';
 import ProductCard from '../ProductsPage/ProductCard/ProductCard';
 import Navbar from "../Navbar/Navbar"
-import imageUrl from '../../assets/images/iphone14.jpg'
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 
@@ -54,7 +53,7 @@ const StartPage = () => {
       <div className="flex flex-col">
         <div className="flex bg-background mt-10">
           <div className='w-1/3'>
-            <img className="object-cover h-96 w-full" src={imageUrl} alt="" />
+            <img className="object-cover h-96 w-full" src={randomProduct?.imageUrl} alt="" />
           </div>
 
           <div className='w-2/3 text-white p-8'>
