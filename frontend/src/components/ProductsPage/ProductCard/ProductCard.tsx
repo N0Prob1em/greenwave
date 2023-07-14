@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
-import imageUrl from '../../../assets/images/iphone14.jpg'
 
 export interface IProduct {
   product: {
@@ -28,8 +27,8 @@ function ProductCard({ product }: IProduct) {
         <div className="product-image4">
           <a href={product.id}>
             <img
-              className= 'pic-1 rounded-t'
-              src={imageUrl}
+              className= 'pic-1 rounded-t min-h-5 max-h-64'
+              src={product.imageUrl}
               alt=""
             /> 
           </a>

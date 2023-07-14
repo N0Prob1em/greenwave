@@ -27,9 +27,6 @@ function ProductsPage() {
 
   const productList = products.map(product => <ProductCard key={product.id} product={product} />);
 
-  //for testing multiple components add to list
-  //const postList = [<PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />, <PostCard key={posts[0].id} post={posts[0]} />]
-
   return (
     <>
     <Navbar/>
