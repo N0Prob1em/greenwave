@@ -44,7 +44,7 @@ const SingleProduct = () => {
           <div className="flex align-center w-full h-full mr-4 bg-neutral-200">
             <img
                 className= 'pic-1 rounded-t object-contain'
-                src={imageUrl}
+                src={product?.imageUrl}
                 alt=""
               />
           </div>
