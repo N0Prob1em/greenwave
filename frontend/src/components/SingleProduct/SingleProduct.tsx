@@ -1,7 +1,6 @@
 import Navbar from "../Navbar/Navbar";
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
-import imageUrl from '../../assets/images/iphone14.jpg'
 import { useEffect, useState } from "react";
 import ProductsApi from '../../api/Products';
 
