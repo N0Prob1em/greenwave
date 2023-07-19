@@ -9,7 +9,7 @@ class Products {
     return Api.get(`/product/${id}`);
   }
 
-  postProduct(title: string, description: string, tags: string, imageUrl: string) {
+  postProduct() {
     return Api.post(`/newproduct`)
   }
 }
