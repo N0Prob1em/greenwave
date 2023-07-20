@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import StartPage from './components/StartPage/StartPage';
 import ProductsPage from './components/ProductsPage/ProductsPage'
 import SingleProduct from './components/SingleProduct/SingleProduct'
+import CreatePage from './components/CreatePage/CreatePage';
 import './App.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<StartPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="/create" element={<CreatePage />}/>
           </Routes>
         </BrowserRouter>
         </div>

@@ -8,6 +8,10 @@ class Products {
   getProductById(id: string) {
     return Api.get(`/product/${id}`);
   }
+
+  postProduct() {
+    return Api.post(`/newproduct`)
+  }
 }
 
 export default new Products();
