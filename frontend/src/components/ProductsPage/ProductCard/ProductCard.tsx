@@ -23,19 +23,21 @@ const ViewButton = styled(Button)`
 function ProductCard({ product }: IProduct) {
   
   return (
-    <div className="laptop:w-1/3 p-4 phone:w-full tablet:w-2/4">
-        <div className="product-image4">
+    //<div className="laptop:w-1/3 p-4 phone:w-full tablet:w-2/4">
+      <div className="max-w-xs mx-auto basic:w-full border-2 border-solid">
+        <div>
           <a href={'/product/' + product.id}>
             <img
-              className= 'pic-1 rounded-t min-h-5 max-h-64'
+              className= 'object-contain h-48 w-96'
               src={product.imageUrl}
               alt=""
             /> 
           </a>
         </div>
-        <div className="product-content bg-background p-6 rounded-b text-white">
-          <a className='product-title font-bold text-2xl' href={product.title}>{product.title}</a>
-          <p className='pb-4'>{product.description}</p>
+        <div className="bg-background p-4 text-white h-30">
+          <a className='font-bold text-2xl' href={product.title}>{product.title}</a>
+          <p className='line-clamp-2' data-te-toggle="tooltip"
+          title={product.description}>{product.description}</p>
           
           <div className='flex justify-between items-center'>
             <p>Posted by <b>Ariano</b></p>
