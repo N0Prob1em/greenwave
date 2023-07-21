@@ -14,6 +14,7 @@ export interface IProduct {
 
 const ViewButton = styled(Button)`
   background-color: #7FC37E;
+  line-height: 0.75rem;
   color: white;
   &:hover {
     background-color: #6a9f66;
