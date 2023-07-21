@@ -34,7 +34,7 @@ function ProductsPage() {
       <div className='text-xl'>
         <h1 className='px-4'>All products</h1>
       </div>
-      <div className='flex flex-wrap'>
+      <div className='flex flex-wrap gap-4'>
         {productList}
       </div>
     </div>
