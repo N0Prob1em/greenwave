@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PostApi from '../../api/PostApi';
-import { format } from 'date-fns';
 import Navbar from '../Navbar/Navbar';
 
 const AddProductPage: React.FC = () => {
@@ -38,7 +37,8 @@ const AddProductPage: React.FC = () => {
     try {
         if (post !== null) {
           const response = await PostApi.postProduct(post);
-          alert("Added successfully..") // We need to check response success before redirecting.
+          if(response !== null)
+            alert("Added successfully.."); // We need to check response success before redirecting.
         }
       } catch (error) {
         console.log(error);
