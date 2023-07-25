@@ -19,8 +19,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 
-const destination = ['', 'products', 'categories', 'about', 'create']
-const pages = ['home', 'all products', 'categories', 'about us', 'add product'];
+const destination = ['', 'products', 'categories', 'about', 'create', 'add']
+const pages = ['home', 'all products', 'categories', 'about us', 'add product', 'add product'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledAppBar = styled(AppBar)`

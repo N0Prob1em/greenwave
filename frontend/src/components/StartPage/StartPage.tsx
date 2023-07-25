@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProductsApi from '../../api/Products';
+import ProductsApi from '../../api/PostApi';
 import ProductCard from '../ProductsPage/ProductCard/ProductCard';
 import Navbar from "../Navbar/Navbar"
 import { Button } from '@mui/material';
