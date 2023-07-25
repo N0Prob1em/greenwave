@@ -18,6 +18,8 @@ import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginButton from '../LoginButton';
+import LogoutButton from '../LogoutButton';
+import UserProfile from '../UserProfile';
 
 const pages = ['home', 'all products', 'categories', 'about us'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -167,6 +169,8 @@ const Navbar = () => {
             </Menu>
           </Box>
           <LoginButton></LoginButton>
+          <LogoutButton></LogoutButton>
+          <UserProfile></UserProfile>
         </Toolbar>
       </Container>
     </StyledAppBar>
