@@ -1,9 +1,8 @@
 import Navbar from "../Navbar/Navbar";
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
-import imageUrl from '../../assets/images/iphone14.jpg'
 import { useEffect, useState } from "react";
-import ProductsApi from '../../api/Products';
+import ProductsApi from '../../api/PostApi';
 
 export interface IProduct {
   id: string;
@@ -44,7 +43,7 @@ const SingleProduct = () => {
           <div className="flex align-center w-full h-full mr-4 bg-neutral-200">
             <img
                 className= 'pic-1 rounded-t object-contain'
-                src={imageUrl}
+                src={product?.imageUrl}
                 alt=""
               />
           </div>

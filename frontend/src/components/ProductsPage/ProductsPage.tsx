@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ProductsApi from '../../api/Products';
+import ProductsApi from '../../api/PostApi';
 import ProductCard from './ProductCard/ProductCard';
 import './ProductsPage.css';
 import Navbar from '../Navbar/Navbar';
@@ -31,10 +31,10 @@ function ProductsPage() {
     <>
     <Navbar/>
     <div className='p-3'>
-      <div className='text-xl'>
+      <div className='text-xl mb-2'>
         <h1 className='px-4'>All products</h1>
       </div>
-      <div className='flex flex-wrap'>
+      <div className='flex flex-wrap gap-4'>
         {productList}
       </div>
     </div>

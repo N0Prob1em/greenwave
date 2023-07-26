@@ -14,6 +14,7 @@ export interface IProduct {
 
 const ViewButton = styled(Button)`
   background-color: #7FC37E;
+  line-height: 0.75rem;
   color: white;
   &:hover {
     background-color: #6a9f66;
@@ -23,21 +24,27 @@ const ViewButton = styled(Button)`
 function ProductCard({ product }: IProduct) {
   
   return (
-    <div className="laptop:w-1/3 p-4 phone:w-full tablet:w-2/4">
-        <div className="product-image4">
-          <a href={product.id}>
+    //<div className="laptop:w-1/3 p-4 phone:w-full tablet:w-2/4">
+      <div className="max-w-xs mx-auto basic:w-full border-2 border-solid">
+        <div>
+          <a href={'/product/' + product.id}>
             <img
-              className= 'pic-1 rounded-t min-h-5 max-h-64'
+              className= 'object-contain h-48 w-96'
               src={product.imageUrl}
               alt=""
             /> 
           </a>
         </div>
-        <div className="product-content bg-background p-6 rounded-b text-white">
-          <a className='product-title font-bold text-2xl' href={product.title}>{product.title}</a>
-          <p className='pb-4'>{product.description}</p>
-          
-          <div className='flex justify-between items-center'>
+        <div className="bg-background p-4 text-white h-30">
+          <a className='font-bold text-2xl' href={product.title}>{product.title}</a>
+          <div className="group cursor-pointer relative inline-block border-b border-gray-400 w-50 mt-1.5">
+            <p className='line-clamp-2 '>{product.description}</p>
+            <div className="opacity-0 w-50 bg-white text-black text-center text-s rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full -left-1/2 ml-36 px-3 pointer-events-none">
+              {product.description}
+              <svg className="absolute text-white h-2 w-full left-0 top-full" x="0px" y="0px" viewBox="0 0 255 255"><polygon className="fill-current" points="0,0 127.5,127.5 255,0"/></svg>
+            </div>
+          </div>
+          <div className='flex justify-between items-center mt-0.5'>
             <p>Posted by <b>Ariano</b></p>
             <Link to={'/product/' + product.id}><ViewButton>View</ViewButton></Link>
           </div>
