@@ -9,8 +9,8 @@ class Products {
     return Api.get(`/product/${id}`);
   }
 
-  postProduct() {
-    return Api.post(`/newproduct`)
+  postProduct(post: any) {
+    return Api.post(`/newproduct`,post);
   }
 }
 
