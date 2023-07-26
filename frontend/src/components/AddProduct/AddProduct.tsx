@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PostApi from '../../api/PostApi';
 import Navbar from '../Navbar/Navbar';
 
@@ -25,25 +25,34 @@ const AddProductPage: React.FC = () => {
     dateAdded: string,
   }
 
-  const handleFormSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setPost({
-        title: title,
-        description: description,
-        tag: tag,
-        imageUrl: imageUrl,
-        dateAdded: new Date().toISOString().split("T")[0] +" "+ new Date().toLocaleTimeString().split("PM")[0].trimEnd()
-      });
-    try {
+      title: title,
+      description: description,
+      tag: tag,
+      imageUrl: imageUrl,
+      dateAdded: new Date().toISOString().split("T")[0] + " " + new Date().toLocaleTimeString().split("PM")[0].trimEnd()
+    });
+  };
+
+  useEffect(() => {
+    const submitPost = async () => {
+      try {
         if (post !== null) {
           const response = await PostApi.postProduct(post);
-          if(response !== null)
+          if (response !== null)
             alert("Added successfully.."); // We need to check response success before redirecting.
         }
       } catch (error) {
         console.log(error);
       }
-  };
+    };
+
+    if (post.title !== "") {
+      submitPost();
+    }
+  }, [post]);
 
   return (
     <>

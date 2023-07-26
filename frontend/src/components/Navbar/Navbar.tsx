@@ -22,8 +22,8 @@ import LogoutButton from '../LogoutButton';
 import UserProfile from '../UserProfile';
 
 
-const destination = ['', 'products', 'categories', 'about', 'create', 'add']
-const pages = ['home', 'all products', 'categories', 'about us', 'add product', 'add product'];
+const destination = ['', 'products', 'categories', 'about', 'add']
+const pages = ['home', 'all products', 'categories', 'about us', 'add product'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledAppBar = styled(AppBar)`

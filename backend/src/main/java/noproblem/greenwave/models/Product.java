@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "product")
@@ -21,6 +22,7 @@ public class Product {
     private String description;
 
     @Column(nullable = false)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date dateAdded;
 
     private List<String> tag;
