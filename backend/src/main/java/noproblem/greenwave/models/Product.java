@@ -26,6 +26,7 @@ public class Product {
     private List<String> tag;
 
     //private User user
+    //private Category category
 
     @Column(nullable = false)
     private String imageUrl;

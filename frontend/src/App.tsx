@@ -11,7 +11,7 @@ function App() {
   return (
     <>
     <div className='flex justify-center'>
-      <div className='laptop:w-3/4 bg-white phone:w-full'>
+      <div className='laptop:w-3/4 bg-white phone:w-full max-w-7xl'>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<StartPage />} />
