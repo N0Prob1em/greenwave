@@ -17,6 +17,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginButton from '../LoginButton';
+import LogoutButton from '../LogoutButton';
+import UserProfile from '../UserProfile';
 
 
 const destination = ['', 'products', 'categories', 'about', 'create']
@@ -167,6 +170,9 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
+          <LoginButton></LoginButton>
+          <LogoutButton></LogoutButton>
+          <UserProfile></UserProfile>
         </Toolbar>
       </Container>
     </StyledAppBar>
