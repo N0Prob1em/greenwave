@@ -21,7 +21,9 @@ import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import UserProfile from '../UserProfile';
 
-const pages = ['home', 'all products', 'categories', 'about us'];
+
+const destination = ['', 'products', 'categories', 'about', 'create']
+const pages = ['home', 'all products', 'categories', 'about us', 'add product'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledAppBar = styled(AppBar)`
@@ -100,9 +102,9 @@ const Navbar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Link to="/products"><Typography textAlign="center">{page}</Typography></Link>
+              {destination.map((dest, i) => (
+                <MenuItem key={dest} onClick={handleCloseNavMenu}>
+                  <Link to={`/${dest}`}><Typography textAlign="center">{pages[i]}</Typography></Link>
                 </MenuItem>
               ))}
             </Menu>
@@ -127,13 +129,13 @@ const Navbar = () => {
 
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Link to="/products" key={page}>
+            {destination.map((dest, i) => (
+              <Link to={`/${dest}`} key={dest}>
               <Button
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {pages[i]}
               </Button>
               </Link>
             ))}

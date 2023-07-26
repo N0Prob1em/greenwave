@@ -69,8 +69,8 @@ const StartPage = () => {
         <br />
 
         <div className="p-4">
-          <p className="text-xl font-bold px-4">Featured products</p>
-          <div className='flex flex-wrap'>
+          <p className="text-xl font-bold px-4 mb-2">Featured products</p>
+          <div className='flex flex-wrap gap-4'>
             {productList}
           </div>
         </div>
