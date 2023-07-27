@@ -51,7 +51,7 @@ const StartPage = () => {
     <>
       <Navbar/>
       <div className="flex flex-col">
-        <div className="flex bg-background mt-10">
+        <div className="flex bg-[#383434] mt-10">
           <div className='w-1/3'>
             <img className="object-cover h-96 w-full" src={randomProduct?.imageUrl} alt="" />
           </div>

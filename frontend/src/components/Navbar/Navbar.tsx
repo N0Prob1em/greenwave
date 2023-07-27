@@ -17,9 +17,9 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LoginButton from '../LoginButton';
-import LogoutButton from '../LogoutButton';
-import UserProfile from '../UserProfile';
+import LoginButton from '../Authentication/LoginButton';
+import LogoutButton from '../Authentication/LogoutButton';
+import UserProfile from '../Authentication/UserProfile';
 
 
 const destination = ['', 'products', 'categories', 'about', 'add']

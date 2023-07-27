@@ -6,11 +6,10 @@ import ImageUploader from './ImageUploader';
 
 const AddProductPage: React.FC = () => {
   const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
   const [tag, setTags] = useState<string[]>([]);
   const [imageUrl, setImgUrl] = useState<string | null>(null);
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  //const [category, setCategory] = useState("");
   const [post, setPost] = useState<IPost>({
     title: "",
     description: "",
@@ -76,19 +75,6 @@ const AddProductPage: React.FC = () => {
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="price" className="block font-medium">
-            Price
-          </label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-            className="mt-1 p-2 w-full border rounded"
-          />
-        </div>
-        <div className="mb-4">
           <label htmlFor="tags" className="block font-medium">
             Tags
           </label>
@@ -114,7 +100,7 @@ const AddProductPage: React.FC = () => {
             className="mt-1 p-2 w-full border rounded"
           />
         </div>
-        <div className="mb-4">
+        {/* <div className="mb-4">
           <label htmlFor="category" className="block font-medium">
             Category
           </label>
@@ -128,9 +114,8 @@ const AddProductPage: React.FC = () => {
             <option value="electronics">Electronics</option>
             <option value="clothing">Clothing</option>
             <option value="home">Home & Kitchen</option>
-            {/* Add more options here */}
           </select>
-        </div>
+        </div> */}
         <div className="mb-4">
           {/* <label htmlFor="tags" className="block font-medium">
             Image URL
