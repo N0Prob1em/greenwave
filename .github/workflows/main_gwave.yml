@@ -24,10 +24,10 @@ jobs:
       - name: Build with Maven
         run: cd backend && mvn clean install
 
-      # Create a Dockerfile in the /backend directory with wildcard *.jar
+      # Create a Dockerfile in the /backend directory with LF line terminators
       - name: Create Dockerfile
         run: |
-          echo "FROM openjdk:17 \nWORKDIR /app\nCOPY backend/target/*.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"*.jar\"]" > backend/Dockerfile
+          echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/*.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"*.jar\"]" > backend/Dockerfile
 
       - name: Dockerize the JAR app
         run: docker build -t gwave backend/
