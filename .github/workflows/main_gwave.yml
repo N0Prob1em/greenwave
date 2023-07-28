@@ -30,7 +30,7 @@ jobs:
           echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/*.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"*.jar\"]" > backend/Dockerfile
 
       - name: Dockerize the JAR app
-        run: docker build -t gwave backend/
+        run: docker build -t gwave backend/target/
 
       - name: Log in to Fly.io
         uses: superfly/flyctl-actions/setup-flyctl@master
