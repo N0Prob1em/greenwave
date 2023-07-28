@@ -24,6 +24,10 @@ jobs:
       - name: Build with Maven
         run: cd backend && mvn clean install
 
+      # Create a Dockerfile in the /backend directory
+      - name: Create Dockerfile
+        run: echo "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/your-app-name.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"your-app-name.jar\"]" > backend/Dockerfile
+
       - name: Dockerize the JAR app
         run: docker build -t gwave backend/
 
