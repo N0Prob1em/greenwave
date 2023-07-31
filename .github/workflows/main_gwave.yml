@@ -22,26 +22,26 @@ jobs:
       - name: Build with Maven
         run: cd backend && mvn clean install
 
-      - name: List files in backend/target
-        run: ls backend/target
+#       - name: List files in backend/target
+#         run: ls backend/target
 
       # Create a Dockerfile in the /backend directory with LF line terminators
       - name: Create Dockerfile
         run: |
           echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY target/greenwave-0.0.1-SNAPSHOT.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"greenwave-0.0.1-SNAPSHOT.jar\"]" > backend/Dockerfile
       - name: Dockerize the JAR app 
-        run: cd backend && docker build -t gwave . && ls
+        run: cd backend && docker build -t gwave .
         
 #       - name: List files in current
 #         run: dir
         
-#       - name: Install Flyctl CLI
-#         run: |
-#           curl -L https://fly.io/install.sh | sh
+      - name: Install Flyctl CLI
+        run: |
+          curl -L https://fly.io/install.sh | sh
       
-#       - uses: superfly/flyctl-actions/setup-flyctl@master
-#       - name: Create in to Fly.io
-#         run: flyctl launch --remote-only --name gwave -i backend/
-#         env:
-#             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Create to Fly.io
+        run: flyctl launch --remote-only --name gwave -i backend/
+        env:
+            FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         
