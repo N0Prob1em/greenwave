@@ -27,7 +27,7 @@ jobs:
       # Create a Dockerfile in the /backend directory with LF line terminators
       - name: Create Dockerfile
         run: |
-          echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/*.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"*.jar\"]" > backend/Dockerfile
+          echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/greenwave-0.0.1-SNAPSHOT.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"greenwave-0.0.1-SNAPSHOT.jar\"]" > backend/Dockerfile
       - name: Dockerize the JAR app
         run: docker build -t gwave backend/
 
