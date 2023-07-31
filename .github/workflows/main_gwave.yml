@@ -32,8 +32,8 @@ jobs:
       - name: Dockerize the JAR app 
         run: cd backend && docker build -t gwave .
         
-      - name: List files in backend
-        run: ls backend
+      - name: List files in app
+        run: ls app
         
 #       - name: Install Flyctl CLI
 #         run: |
