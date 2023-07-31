@@ -1,6 +1,3 @@
-# Docs for the Fly.io deployment: https://fly.io/docs/getting-started/github-actions/
-# More GitHub Actions for Fly.io: https://github.com/fly-apps/actions
-
 name: Build and deploy Dockerized app to Fly.io
 
 on:
@@ -24,11 +21,13 @@ jobs:
       - name: Build with Maven
         run: cd backend && mvn clean install
 
+      - name: List files in backend/target
+        run: ls backend/target
+
       # Create a Dockerfile in the /backend directory with LF line terminators
       - name: Create Dockerfile
         run: |
           echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY backend/target/*.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"*.jar\"]" > backend/Dockerfile
-
       - name: Dockerize the JAR app
         run: docker build -t gwave backend/
 
@@ -40,6 +39,5 @@ jobs:
       - name: Install Flyctl CLI
         run: |
           curl -L https://fly.io/install.sh | sh
-
       - name: Deploy to Fly.io
         run: flyctl deploy --remote-only
