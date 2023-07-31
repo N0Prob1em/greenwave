@@ -38,10 +38,14 @@ jobs:
       - name: Install Flyctl CLI
         run: |
           curl -L https://fly.io/install.sh | sh
+          
       
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - name: Create to Fly.io
-        run: flyctl launch --remote-only --name gwave -i backend/
-        env:
-            FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+      
+      - name: Regions to Fly.io
+        run: flyctl platform regions -j
+#       - name: Create to Fly.io
+#         run: flyctl launch --remote-only --name gwave -i backend/
+#         env:
+#             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         
