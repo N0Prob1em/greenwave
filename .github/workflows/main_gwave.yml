@@ -22,9 +22,6 @@ jobs:
       - name: Build with Maven
         run: cd backend && mvn clean install
 
-#       - name: List files in backend/target
-#         run: ls backend/target
-
       # Create a Dockerfile in the /backend directory with LF line terminators
       - name: Create Dockerfile
         run: |
@@ -32,8 +29,6 @@ jobs:
       - name: Dockerize the JAR app 
         run: cd backend && docker build -t gwave .
         
-#       - name: List files in current
-#         run: dir
         
       - name: Install Flyctl CLI
         run: |
@@ -42,12 +37,8 @@ jobs:
       
       - uses: superfly/flyctl-actions/setup-flyctl@master
       
-      - name: Regions to Fly.io
-        run: flyctl platform regions -j
+      - name: Create to Fly.io
+        run: flyctl launch --remote-only --name gwave -i backend/ -r arn
         env:
-             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-#       - name: Create to Fly.io
-#         run: flyctl launch --remote-only --name gwave -i backend/
-#         env:
-#             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+            FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         
