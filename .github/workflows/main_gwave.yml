@@ -19,7 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Build with Maven
-        run: cd backend && mvn clean install
+        run: mvn clean install
 
       - name: List files in backend/target
         run: ls backend/target
