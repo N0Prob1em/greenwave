@@ -38,7 +38,7 @@ jobs:
       
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - name: Create in to Fly.io
-        run: flyctl launch --remote-only -a gwave
+        run: flyctl launch --remote-only --generate-name
         env:
             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
         
