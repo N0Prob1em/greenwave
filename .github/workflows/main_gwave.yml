@@ -38,7 +38,7 @@ jobs:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       
       - name: Create to Fly.io
-        run: flyctl launch --name gwave -i /backend -r arn --now
+        run: flyctl launch --name gwave -i backend -r arn --now
         env:
             FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
