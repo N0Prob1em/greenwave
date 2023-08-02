@@ -3,13 +3,11 @@ import PostApi from '../../api/PostApi';
 import Navbar from '../Navbar/Navbar';
 import ImageUploader from './ImageUploader';
 
-
 const AddProductPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [tag, setTags] = useState<string[]>([]);
   const [imageUrl, setImgUrl] = useState<string | null>(null);
   const [description, setDescription] = useState("");
-  //const [category, setCategory] = useState("");
   const [post, setPost] = useState<IPost>({
     title: "",
     description: "",
@@ -43,7 +41,7 @@ const AddProductPage: React.FC = () => {
         if (post !== null) {
           const response = await PostApi.postProduct(post);
           if (response !== null)
-            alert("Added successfully.."); // We need to check response success before redirecting.
+            alert("Added successfully..");
         }
       } catch (error) {
         console.log(error);
@@ -100,34 +98,7 @@ const AddProductPage: React.FC = () => {
             className="mt-1 p-2 w-full border rounded"
           />
         </div>
-        {/* <div className="mb-4">
-          <label htmlFor="category" className="block font-medium">
-            Category
-          </label>
-          <select
-            id="category"
-            name="category"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 p-2 w-full border rounded"
-          >
-            <option value="electronics">Electronics</option>
-            <option value="clothing">Clothing</option>
-            <option value="home">Home & Kitchen</option>
-          </select>
-        </div> */}
         <div className="mb-4">
-          {/* <label htmlFor="tags" className="block font-medium">
-            Image URL
-          </label>
-          <input
-            type="text"
-            id="imgUrl"
-            name="imgUrl"
-            value={imageUrl}
-            onChange={(e) => setImgUrl(e.target.value)}
-            className="mt-1 p-2 w-full border rounded"
-          /> */}
           <ImageUploader setImgUrl={setImgUrl} />
           {imageUrl && <img src={imageUrl} className="object-contain h-48 w-96 ..." alt="Uploaded" />}
         </div>
