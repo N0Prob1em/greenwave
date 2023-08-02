@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PostApi from '../../api/PostApi';
 import Navbar from '../Navbar/Navbar';
+import ImageUploader from './ImageUploader';
+
 
 const AddProductPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [tag, setTags] = useState<string[]>([]);
-  const [imageUrl, setImgUrl] = useState("");
+  const [imageUrl, setImgUrl] = useState<string | null>(null);
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [post, setPost] = useState<IPost>({
@@ -21,10 +23,10 @@ const AddProductPage: React.FC = () => {
     title: string,
     description: string,
     tag: {},
-    imageUrl: string,
+    imageUrl: string | null,
     dateAdded: string,
   }
-
+  console.log(imageUrl);
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setPost({
@@ -130,7 +132,7 @@ const AddProductPage: React.FC = () => {
           </select>
         </div>
         <div className="mb-4">
-          <label htmlFor="tags" className="block font-medium">
+          {/* <label htmlFor="tags" className="block font-medium">
             Image URL
           </label>
           <input
@@ -140,8 +142,11 @@ const AddProductPage: React.FC = () => {
             value={imageUrl}
             onChange={(e) => setImgUrl(e.target.value)}
             className="mt-1 p-2 w-full border rounded"
-          />
+          /> */}
+          <ImageUploader setImgUrl={setImgUrl} />
+          {imageUrl && <img src={imageUrl} className="object-contain h-48 w-96 ..." alt="Uploaded" />}
         </div>
+        
         <div className="flex justify-end">
           <button
             type="submit"
