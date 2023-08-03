@@ -4,8 +4,11 @@ import ProductsPage from './components/ProductsPage/ProductsPage'
 import SingleProduct from './components/SingleProduct/SingleProduct'
 import AddProduct from './components/AddProduct/AddProduct';
 import './App.css'
+import { useAuth0 } from "@auth0/auth0-react";
 
 function App() {
+
+  const { isAuthenticated } = useAuth0();
 
   return (
     <>
@@ -16,8 +19,7 @@ function App() {
             <Route path="/" element={<StartPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
-            {/* <Route path="/create" element={<CreatePage />}/> */}
-            <Route path="/add" element={<AddProduct />}/>
+            {isAuthenticated && (<Route path="/add" element={<AddProduct />}/>)}
           </Routes>
         </BrowserRouter>
         </div>
