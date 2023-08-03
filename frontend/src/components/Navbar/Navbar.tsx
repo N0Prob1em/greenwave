@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
 import LogoutButton from '../Authentication/LogoutButton';
 import UserProfile from '../Authentication/UserProfile';
+import { User, useAuth0 } from "@auth0/auth0-react";
 
 
 const destination = ['', 'products', 'categories', 'about', 'add']
@@ -31,6 +32,8 @@ const StyledAppBar = styled(AppBar)`
 `;
 
 const Navbar = () => {
+
+  const { isAuthenticated } = useAuth0();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -170,9 +173,22 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <LoginButton></LoginButton>
-          <LogoutButton></LogoutButton>
-          <UserProfile></UserProfile>
+          <div>
+            {isAuthenticated && (
+              <>
+                <LogoutButton/>
+                <UserProfile/>
+              </>
+            )}
+            {!isAuthenticated && (
+              <>
+                <LoginButton/>
+              </>
+            )}
+          </div>
+          {/*  <LoginButton></LoginButton>
+           <LogoutButton></LogoutButton>
+           <UserProfile></UserProfile> */}
         </Toolbar>
       </Container>
     </StyledAppBar>
