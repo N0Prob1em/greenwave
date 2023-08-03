@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
 import LogoutButton from '../Authentication/LogoutButton';
 import UserProfile from '../Authentication/UserProfile';
-import { User, useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 const destination = ['', 'products', 'categories', 'about', 'add']
@@ -186,9 +186,6 @@ const Navbar = () => {
               </>
             )}
           </div>
-          {/*  <LoginButton></LoginButton>
-           <LogoutButton></LogoutButton>
-           <UserProfile></UserProfile> */}
         </Toolbar>
       </Container>
     </StyledAppBar>
