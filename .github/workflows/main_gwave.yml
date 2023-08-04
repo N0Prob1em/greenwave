@@ -34,7 +34,7 @@ jobs:
         run: |
           cd backend
           docker build -t gwave .
-          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+          docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
           docker tag gwave "$DOCKER_USERNAME/greenwave:latest"
           docker push "$DOCKER_USERNAME/greenwave:latest"
           docker logout
