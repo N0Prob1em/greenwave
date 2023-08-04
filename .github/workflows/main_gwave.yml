@@ -28,11 +28,14 @@ jobs:
           echo -e "FROM openjdk:17\nWORKDIR /app\nCOPY target/greenwave-0.0.1-SNAPSHOT.jar /app/\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"greenwave-0.0.1-SNAPSHOT.jar\"]" > backend/Dockerfile
 
       - name: Dockerize the JAR app
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
         run: |
           cd backend
           docker build -t gwave .
-          echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-          docker tag gwave ${{ secrets.DOCKERHUB_USERNAME }}/greenwaverepo:latest
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/greenwaverepo:latest
+          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+          docker tag gwave "$DOCKER_USERNAME/greenwave:latest"
+          docker push "$DOCKER_USERNAME/greenwave:latest"
           docker logout
         
