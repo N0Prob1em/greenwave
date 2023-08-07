@@ -27,13 +27,13 @@ function ProductCard({ product }: IProduct) {
     //<div className="laptop:w-1/3 p-4 phone:w-full tablet:w-2/4">
       <div className="max-w-xs mx-auto basic:w-full border-2 border-solid">
         <div>
-          <a href={'/product/' + product.id}>
+          <Link to={'/product/' + product.id} >
             <img
               className= 'object-contain h-48 w-96'
               src={product.imageUrl}
               alt=""
             /> 
-          </a>
+          </Link>
         </div>
         <div className="bg-[#383434] p-4 text-white h-30">
           <a className='font-bold text-2xl' href={product.title}>{product.title}</a>
