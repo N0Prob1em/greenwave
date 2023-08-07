@@ -11,6 +11,11 @@ const AddProductPage: React.FC = () => {
   const [tag, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   const [imageUrl, setImgUrl] = useState<string | null>(null);
+  const [titleError, setTitleError] = useState<string>("");
+  const [tagsError, setTagsError] = useState<string>("");
+  const [desError, setDesError] = useState<string>("");
+  const [imageError, setImageError] = useState<string>("");
+  const imageFileRegex = /^image\/(png|jpe?g|gif)$/i;
 
   useEffect(() => {
     if (imageUrl !== null) {
@@ -25,8 +30,44 @@ const AddProductPage: React.FC = () => {
     }
   }, [imageUrl, title, description, tag]);
 
+  const validateForm = () => {
+    let isValid = true;
+    console.log("validate");
+    if (!title.trim()) {
+      setTitleError("Product Name is required.");
+      isValid = false;
+    } else {
+      setTitleError("");
+    }
+
+    if (!tag.length) {
+      setTagsError("At least one tag is required.");
+      isValid = false;
+    } else {
+      setTagsError("");
+    }
+
+    if (!description.length) {
+      setDesError("Product Description is required.");
+      isValid = false;
+    } else {
+      setDesError("");
+    }
+
+    if (!fileData || !imageFileRegex.test(fileData.type)) {
+      setImageError("Please upload a valid image file (PNG, JPEG, or GIF).");
+      isValid = false;
+    } else {
+      UploadFile(fileData);
+      setImageError("");
+    }
+
+    return isValid;
+  };
+
   const submitPost = async (post: IPost) => {
     try {
+      if (!imageUrl || !validateForm()) return;
       const response = await PostApi.postProduct(post);
       if (response) {
         alert("Added successfully..");
@@ -50,22 +91,24 @@ const AddProductPage: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!fileData) return;
-
-    try {
-      const filename = `${uuidv4()}_${fileData.name}`;
-      const { data, error } = await supabase.storage.from('GreenWave').upload(filename, fileData);
-
-      if (error) {
-        console.error('Failed to upload image.', error);
-      } else if (data) {
-        const uploadedImageURL = await supabase.storage.from('GreenWave').getPublicUrl(filename);
-        setImgUrl(uploadedImageURL.data.publicUrl);
-      }
-    } catch (error) {
-      console.error('Error occurred while uploading the image:', error);
-    }
+    if (!validateForm()) return;
   };
+
+  const UploadFile = async(fileData: File) => {
+  try {
+    const filename = `${uuidv4()}_${fileData.name}`;
+    const { data, error } = await supabase.storage.from('GreenWave').upload(filename, fileData);
+
+    if (error) {
+      console.error('Failed to upload image.', error);
+    } else if (data) {
+      const uploadedImageURL = await supabase.storage.from('GreenWave').getPublicUrl(filename);
+      setImgUrl(uploadedImageURL.data.publicUrl);
+    }
+  } catch (error) {
+    console.error('Error occurred while uploading the image:', error);
+  }
+}
 
   return (
     <>
@@ -76,17 +119,21 @@ const AddProductPage: React.FC = () => {
           <div className="mb-4">
             <label htmlFor="title" className="block font-medium">Product Name</label>
             <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="mt-1 p-2 w-full border rounded" />
+            {titleError && <p className="text-red-600">{titleError}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="tags" className="block font-medium">Tags</label>
             <input type="text" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
+            {tagsError && <p className="text-red-600">{tagsError}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block font-medium">Description</label>
             <textarea id="description" name="description" rows={3} value={description} onChange={(e) => setDescription(e.target.value)} className="mt-1 p-2 w-full border rounded" />
+            {desError && <p className="text-red-600">{desError}</p>}
           </div>
           <div className="mb-4">
             <ImageUploader setFileData={setFileData} />
+            {imageError && <p className="text-red-600">{imageError}</p>}
           </div>
           <div className="flex justify-end">
             <button type="submit" className="bg-green-600 text-white px-4 py-2 rounded hover:bg-gray-600">Add Product</button>
