@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useHistory } from 'react-router-use-history'
 import { supabase } from './superbaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import PostApi from '../../api/PostApi';
@@ -10,25 +11,12 @@ const AddProductPage: React.FC = () => {
   const [title, setTitle] = useState("");
   const [tag, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState("");
-  const [imageUrl, setImgUrl] = useState<string | null>(null);
   const [titleError, setTitleError] = useState<string>("");
   const [tagsError, setTagsError] = useState<string>("");
   const [desError, setDesError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");
   const imageFileRegex = /^image\/(png|jpe?g|gif)$/i;
-
-  useEffect(() => {
-    if (imageUrl !== null) {
-      const post = {
-        title,
-        description,
-        tag,
-        imageUrl,
-        dateAdded: `${new Date().toISOString().split("T")[0]} ${new Date().toLocaleTimeString().split("PM")[0].trimEnd()}`,
-      };
-      submitPost(post);
-    }
-  }, [imageUrl, title, description, tag]);
+  const history = useHistory();
 
   const validateForm = () => {
     let isValid = true;
@@ -58,52 +46,49 @@ const AddProductPage: React.FC = () => {
       setImageError("Please upload a valid image file (PNG, JPEG, or GIF).");
       isValid = false;
     } else {
-      UploadFile(fileData);
       setImageError("");
     }
 
     return isValid;
   };
 
-  const submitPost = async (post: IPost) => {
+  const submitPost = async () => {
     try {
-      if (!imageUrl || !validateForm()) return;
-      const response = await PostApi.postProduct(post);
-      if (response) {
-        alert("Added successfully..");
-        setTitle("");
-        setTags([]);
-        setDescription("");
-        setFileData(null);
-        setImgUrl(null);
+      if (!fileData || !validateForm()) return;
+
+      const url = await UploadFile(fileData);
+      if (url) { 
+        const response = await PostApi.postProduct({
+          title: title,
+          description: description,
+          tag: tag,
+          imageUrl: url,
+          dateAdded: `${new Date().toISOString().split("T")[0]} ${new Date().toLocaleTimeString().split("PM")[0].trimEnd()}`,
+        });
+  
+        if (response) {
+          alert("Added successfully..");
+          history.go(0);
+        }
       }
     } catch (error) {
       console.log(error);
     }
-  };
-
-  interface IPost {
-    title: string,
-    description: string,
-    tag: string[],
-    imageUrl: string | null,
-  }
+  };  
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
+    submitPost();
   };
 
   const UploadFile = async(fileData: File) => {
   try {
     const filename = `${uuidv4()}_${fileData.name}`;
-    const { data, error } = await supabase.storage.from('GreenWave').upload(filename, fileData);
-
-    if (error) {
-      console.error('Failed to upload image.', error);
-    } else if (data) {
+    const data = await supabase.storage.from('GreenWave').upload(filename, fileData);
+    if (data) {
       const uploadedImageURL = await supabase.storage.from('GreenWave').getPublicUrl(filename);
-      setImgUrl(uploadedImageURL.data.publicUrl);
+      return uploadedImageURL.data.publicUrl;
     }
   } catch (error) {
     console.error('Error occurred while uploading the image:', error);
