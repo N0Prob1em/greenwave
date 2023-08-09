@@ -4,6 +4,7 @@ import ProductCard from '../ProductsPage/ProductCard/ProductCard';
 import Navbar from "../Navbar/Navbar"
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 export interface IProduct {
   id: string;
@@ -53,15 +54,18 @@ const StartPage = () => {
       <div className="flex flex-col">
         <div className="flex bg-[#383434] mt-10">
           <div className='w-1/3'>
-            <img className="object-cover h-96 w-full" src={randomProduct?.imageUrl} alt="" />
+            <Link to={'/product/' + randomProduct?.id}>
+              <img className="object-cover h-96 w-full" src={randomProduct?.imageUrl} alt="" />
+            </Link>
           </div>
-
           <div className='w-2/3 text-white p-8'>
-            <p className='text-5xl font-bold'>{randomProduct?.title}</p>
+            <Link to={'/product/' + randomProduct?.id}>
+              <p className='text-5xl font-bold'>{randomProduct?.title}</p>
+            </Link>
             <br />
             <p>{randomProduct?.description}</p>
             <br />
-            <ViewButton>View</ViewButton>
+            <Link to={'/product/' + randomProduct?.id}><ViewButton>View</ViewButton></Link>
           </div>
 
         </div>
