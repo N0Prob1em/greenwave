@@ -36,7 +36,9 @@ function ProductCard({ product }: IProduct) {
           </Link>
         </div>
         <div className="bg-[#383434] p-4 text-white h-30">
-          <a className='font-bold text-2xl' href={product.title}>{product.title}</a>
+        <Link to={'/product/' + product.id} className='font-bold text-2xl' >
+          {product.title}
+        </Link>
           <div className="group cursor-default relative inline-block border-b border-gray-400 w-50 my-4">
             <p className='line-clamp-2 '>{product.description}</p>
             <div className="opacity-0 w-50 bg-white text-black text-center text-s rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full -left-1/2 ml-36 px-3 pointer-events-none">

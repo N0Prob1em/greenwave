@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-use-history'
+//import { useHistory } from 'react-router-use-history'
 import { supabase } from './superbaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import PostApi from '../../api/PostApi';
@@ -16,7 +16,7 @@ const AddProductPage: React.FC = () => {
   const [desError, setDesError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");
   const imageFileRegex = /^image\/(png|jpe?g|gif)$/i;
-  const history = useHistory();
+  //const history = useHistory();
 
   const validateForm = () => {
     let isValid = true;
@@ -28,7 +28,7 @@ const AddProductPage: React.FC = () => {
       setTitleError("");
     }
 
-    if (!tag.length) {
+    if (!tag.length || tag[0].length == 0) {
       setTagsError("At least one tag is required.");
       isValid = false;
     } else {
@@ -68,7 +68,7 @@ const AddProductPage: React.FC = () => {
   
         if (response) {
           alert("Added successfully..");
-          history.go(0);
+          //history.go(0);
         }
       }
     } catch (error) {

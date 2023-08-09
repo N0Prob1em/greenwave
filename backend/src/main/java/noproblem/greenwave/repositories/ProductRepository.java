@@ -13,7 +13,7 @@ public class ProductRepository {
     @Autowired
     private JpaProductRepository jpaProductRepository;
 
-    public List<Product> getAll() {
+    public List<Product> getAllProducts() {
         return (List<Product>) jpaProductRepository.findAll();
     }
 
