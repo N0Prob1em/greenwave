@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from 'react-router-use-history'
 import { supabase } from './superbaseConfig';
 import { v4 as uuidv4 } from "uuid";
@@ -12,11 +12,11 @@ const AddProductPage: React.FC = () => {
   const [tag, setTags] = useState<string[]>([]);
   const [description, setDescription] = useState("");
   const [titleError, setTitleError] = useState<string>("");
-  const [tagsError, setTagsError] = useState<string>("");
   const [desError, setDesError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");
   const imageFileRegex = /^image\/(png|jpe?g|gif)$/i;
   const history = useHistory();
+  const [startValidation, setStartValidation] = useState(false);
 
   const validateForm = () => {
     let isValid = true;
@@ -26,13 +26,6 @@ const AddProductPage: React.FC = () => {
       isValid = false;
     } else {
       setTitleError("");
-    }
-
-    if (!tag.length || tag[0].length == 0) {
-      setTagsError("At least one tag is required.");
-      isValid = false;
-    } else {
-      setTagsError("");
     }
 
     if (!description.length) {
@@ -48,9 +41,14 @@ const AddProductPage: React.FC = () => {
     } else {
       setImageError("");
     }
-
     return isValid;
   };
+
+  useEffect(() => {
+    if (startValidation) {
+      validateForm();
+    }
+  }, [title, description, fileData]);
 
   const submitPost = async () => {
     try {
@@ -78,6 +76,7 @@ const AddProductPage: React.FC = () => {
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStartValidation(true);
     if (!validateForm()) return;
     submitPost();
   };
@@ -103,13 +102,12 @@ const AddProductPage: React.FC = () => {
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label htmlFor="title" className="block font-medium">Product Name</label>
-            <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="mt-1 p-2 w-full border rounded" />
+            <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="mt-1 p-2 w-full border rounded" /> 
             {titleError && <p className="text-red-600">{titleError}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="tags" className="block font-medium">Tags</label>
-            <input type="text" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
-            {tagsError && <p className="text-red-600">{tagsError}</p>}
+            <input type="text" placeholder="(optional)" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block font-medium">Description</label>
