@@ -17,55 +17,34 @@ const AddProductPage: React.FC = () => {
   const history = useHistory();
 
   const validateForm = () => {
-    let isValid = true;
-    console.log("validate");
-    if (!title.trim()) {
-      setTitleError("Product Name is required.");
-      isValid = false;
-    } else {
-      setTitleError("");
-    }
+    const titleIsValid = !!title.trim();
+    const descriptionIsValid = !!description.trim();
+    const imageIsValid = !!fileData && imageError === "";
+    
+    setTitleError(titleIsValid ? "" : "Product Name is required.");
+    setDesError(descriptionIsValid ? "" : "Product Description is required.");
 
-    if (!description.length) {
-      setDesError("Product Description is required.");
-      isValid = false;
-    } else {
-      setDesError("");
-    }
-
-    if (!fileData || imageError === "" ) {
-      isValid = false;
-    } else {
-      setImageError("");
-    }
-
-    return isValid;
+    return titleIsValid && descriptionIsValid && imageIsValid;
   };
 
-const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newTitle = e.target.value;
     setTitle(newTitle);
-    if (!newTitle.trim()) {
-      setTitleError("Product Name is required.");
-    } else {
-      setTitleError("");
-    }
+    setTitleError(newTitle.trim() ? "" : "Product Name is required.");
   };
 
   const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newDescription = e.target.value;
     setDescription(newDescription);
-    if (!newDescription.trim()) {
-      setDesError("Product Description is required.");
-    } else {
-      setDesError("");
-    }
+    setDesError(newDescription.trim() ? "" : "Product Description is required.");
   };
 
   const submitPost = async () => {
     try {
-      if (!fileData || !validateForm()) return;
-
+      if (!fileData || !validateForm()){
+        alert("Please add product details..");
+        return;
+      }
       const url = await UploadFile(fileData);
       if (url) { 
         const response = await PostApi.postProduct({
