@@ -20,7 +20,6 @@ const AddProductPage: React.FC = () => {
     const titleIsValid = !!title.trim();
     const descriptionIsValid = !!description.trim();
     const imageIsValid = !!fileData && imageError === "";
-    
     setTitleError(titleIsValid ? "" : "Product Name is required.");
     setDesError(descriptionIsValid ? "" : "Product Description is required.");
 
