@@ -20,7 +20,6 @@ function App() {
             <Route path="/" element={<StartPage />} />
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
-            {/* {isAuthenticated && (<Route path="/add" element={<AddProduct />}/>)} */}
             {isAuthenticated ? <Route path="/add" element={<AddProduct />} /> : <Route path="/add" element={<LoginButton />} />}
           </Routes>
         </BrowserRouter>
