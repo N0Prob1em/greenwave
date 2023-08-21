@@ -16,6 +16,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     cacheLocation="localstorage"
     >
     <App />
-    </Auth0Provider>
-  </React.StrictMode>
+    </Auth0Provider>,
+  </React.StrictMode>,
 )
