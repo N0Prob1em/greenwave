@@ -17,10 +17,9 @@ import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
 import UserProfile from '../Authentication/UserProfile';
 import { useAuth0 } from "@auth0/auth0-react";
-import LogoutButton from '../Authentication/LogoutButton';
 
-const destination = ['', 'products', 'categories', 'about', 'add']
-const pages = ['home', 'all products', 'categories', 'about us', 'add product'];
+const destination = ['', 'products', 'categories', 'about', 'add', 'contactus']
+const pages = ['home', 'all products', 'categories', 'about us', 'add product', 'Contact Us'];
 
 const StyledAppBar = styled(AppBar)`
   background-color: #333333;

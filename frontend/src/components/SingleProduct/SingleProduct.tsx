@@ -1,6 +1,4 @@
-import Navbar from "../Navbar/Navbar";
-import { Button } from '@mui/material';
-import { styled } from '@mui/system';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import ProductsApi from '../../api/PostApi';
 
@@ -11,14 +9,6 @@ export interface IProduct {
   imageUrl: string
   dateAdded: string
 }
-
-const ViewButton = styled(Button)`
-  background-color: #7FC37E;
-  color: white;
-  &:hover {
-    background-color: #6a9f66;
-  }
-`;
 
 const SingleProduct = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
@@ -32,32 +22,36 @@ const SingleProduct = () => {
       setProduct(response.data);
     }
     fetchProduct();
-    
+
   }, []);
 
   return (
     <>
-      <Navbar />
-      <div className="flex p-6 justify-center">
-        <div className="laptop:w-1/2 flex justify-center">
-          <div className="flex align-center w-full h-full mr-4 bg-neutral-200">
-            <img
-                className= 'pic-1 rounded-t object-contain'
+      {product && (
+        <div className="flex p-6 justify-center">
+          <div className="laptop:w-1/2 flex justify-center">
+            <div className="flex align-center w-full h-full mr-4 bg-neutral-200">
+              <img
+                className='pic-1 rounded-t object-contain'
                 src={product?.imageUrl}
                 alt=""
               />
+            </div>
           </div>
-        </div>
 
-        <div className="laptop:w-1/2">
-          <p className="text-3xl font-bold">{product?.title}</p>
-          <p>Posted by <b>Ariano</b></p>
-          <br />
-          <p>{product?.description}</p>
-          <br />
-          <ViewButton>Contact now</ViewButton>
-        </div>
-      </div>
+          <div className="laptop:w-1/2">
+            <p className="text-3xl font-bold">{product?.title}</p>
+            <p>Posted by <b>Ariano</b></p>
+            <br />
+            <p>{product?.description}</p>
+            <br />
+            <Link to={{
+              pathname: '/contact',
+              search: `?productTitle=${product.title}&productDes=${product.description}`,
+            }}
+              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-gray-600">Contact Now</Link>
+          </div>
+        </div>)}
     </>
   )
 };

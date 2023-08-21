@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-use-history'
 import { supabase } from './superbaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import PostApi from '../../api/PostApi';
-import Navbar from '../Navbar/Navbar';
 import ImageUploader from './ImageUploader';
 
 const AddProductPage: React.FC = () => {
@@ -86,7 +85,6 @@ const AddProductPage: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <div className="max-w-2xl mx-auto p-8 mt-8 bg-white rounded shadow">
         <h2 className="text-2xl font-semibold mb-6">Add Product</h2>
         <form onSubmit={handleFormSubmit}>
