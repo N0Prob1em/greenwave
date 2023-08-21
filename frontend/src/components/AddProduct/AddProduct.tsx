@@ -7,9 +7,9 @@ import ImageUploader from './ImageUploader';
 
 const AddProductPage: React.FC = () => {
   const [fileData, setFileData] = useState<File | null>(null);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string>("");
   const [tag, setTags] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState<string>("");
   const [titleError, setTitleError] = useState<string>("");
   const [desError, setDesError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");
@@ -20,6 +20,7 @@ const AddProductPage: React.FC = () => {
     const descriptionIsValid = !!description.trim();
     const imageIsValid = !!fileData && imageError === "";
     
+    setImageError(imageIsValid ? "" : "Please upload a valid image file (PNG, JPEG, or GIF).")
     setTitleError(titleIsValid ? "" : "Product Name is required.");
     setDesError(descriptionIsValid ? "" : "Product Description is required.");
 
@@ -95,7 +96,7 @@ const AddProductPage: React.FC = () => {
           </div>
           <div className="mb-4">
             <label htmlFor="tags" className="block font-medium">Tags</label>
-            <input type="text" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
+            <input type="text" placeholder="(optional)" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block font-medium">Description</label>

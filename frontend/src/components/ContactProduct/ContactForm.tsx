@@ -6,7 +6,6 @@ import { useHistory } from 'react-router-use-history'
 
 const ContactForm: React.FC = () => {
     const [name, setName] = useState("");
-    //const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
     const history = useHistory();
     const { user } = useAuth0();

@@ -9,13 +9,12 @@ import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogoutButton from '../Authentication/LogoutButton';
-import LoginButton from "./LoginButton";
 
 const UserProfile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const destination = ['', 'products', 'logout']
-  const settings = ['Profile', 'Dashboard', 'logout'];
+  const settings = ['Profile', 'Dashboard', 'Logout'];
 
   if (isLoading) {
     return <div>Loading ...</div>;
