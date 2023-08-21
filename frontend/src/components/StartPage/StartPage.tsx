@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/PostApi';
 import ProductCard from '../ProductsPage/ProductCard/ProductCard';
-import Navbar from "../Navbar/Navbar"
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
@@ -50,7 +49,6 @@ const StartPage = () => {
 
   return (
     <>
-      <Navbar/>
       <div className="flex flex-col">
         <div className="flex bg-[#383434] mt-10">
           <div className='w-1/3'>
