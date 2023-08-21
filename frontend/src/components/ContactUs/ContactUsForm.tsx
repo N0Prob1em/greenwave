@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-use-history'
 import contactApi from '../../api/contactApi';
 import { useAuth0 } from "@auth0/auth0-react";
 
 const ContactForm: React.FC = () => {
     const [name, setName] = useState("");
     const [message, setMessage] = useState<string>("");
+    const history = useHistory();
     const { user } = useAuth0();
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -20,6 +22,7 @@ const ContactForm: React.FC = () => {
                 subject: name,
                 body: "Thank you very much for connecting with us. Our assistent will get back to you within 24 hour."
             });
+            history.go(0);
         } else {
             // Handle error
         }

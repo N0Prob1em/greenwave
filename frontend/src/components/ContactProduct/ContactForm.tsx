@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import contactApi from '../../api/contactApi';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-use-history'
 
 const ContactForm: React.FC = () => {
     const [name, setName] = useState("");
     //const [email, setEmail] = useState<string>("");
     const [message, setMessage] = useState<string>("");
+    const history = useHistory();
     const { user } = useAuth0();
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -25,6 +27,7 @@ const ContactForm: React.FC = () => {
                 subject: name,
                 body: "Your interest for " + productTitle + " Successfully sent.."
             });
+            history.go(0);
         } else {
             // Handle error
         }
