@@ -13,7 +13,7 @@ const AboutUsPage = () => {
     {
       name: 'Joel',
       role: 'Developer',
-      image: 'https://nwybeuabycyiazyoohqr.supabase.co/storage/v1/object/public/GreenWave/Snehal.jpg',
+      image: 'https://nwybeuabycyiazyoohqr.supabase.co/storage/v1/object/public/GreenWave/Joel.jpg',
     }
     // Add more team members as needed
   ];
