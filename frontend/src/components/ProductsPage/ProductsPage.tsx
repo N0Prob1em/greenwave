@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/PostApi';
 import ProductCard from './ProductCard/ProductCard';
-import './ProductsPage.css';
 
 export interface IProduct {
   id: string;
