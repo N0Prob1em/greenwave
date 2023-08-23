@@ -18,7 +18,6 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-
     @GetMapping("/gallery")
     public ResponseEntity<List<Product>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());

@@ -3,59 +3,48 @@ import { useHistory } from 'react-router-use-history'
 import { supabase } from './superbaseConfig';
 import { v4 as uuidv4 } from "uuid";
 import PostApi from '../../api/PostApi';
-import Navbar from '../Navbar/Navbar';
 import ImageUploader from './ImageUploader';
 
 const AddProductPage: React.FC = () => {
   const [fileData, setFileData] = useState<File | null>(null);
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState<string>("");
   const [tag, setTags] = useState<string[]>([]);
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState<string>("");
   const [titleError, setTitleError] = useState<string>("");
-  const [tagsError, setTagsError] = useState<string>("");
   const [desError, setDesError] = useState<string>("");
   const [imageError, setImageError] = useState<string>("");
-  const imageFileRegex = /^image\/(png|jpe?g|gif)$/i;
   const history = useHistory();
 
   const validateForm = () => {
-    let isValid = true;
-    console.log("validate");
-    if (!title.trim()) {
-      setTitleError("Product Name is required.");
-      isValid = false;
-    } else {
-      setTitleError("");
-    }
+    const titleIsValid = !!title.trim();
+    const descriptionIsValid = !!description.trim();
+    const imageIsValid = !!fileData && imageError === "";
+    
+    setImageError(imageIsValid ? "" : "Please upload a valid image file (PNG, JPEG, or GIF).")
+    setTitleError(titleIsValid ? "" : "Product Name is required.");
+    setDesError(descriptionIsValid ? "" : "Product Description is required.");
 
-    if (!tag.length || tag[0].length == 0) {
-      setTagsError("At least one tag is required.");
-      isValid = false;
-    } else {
-      setTagsError("");
-    }
+    return titleIsValid && descriptionIsValid && imageIsValid;
+  };
 
-    if (!description.length) {
-      setDesError("Product Description is required.");
-      isValid = false;
-    } else {
-      setDesError("");
-    }
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newTitle = e.target.value;
+    setTitle(newTitle);
+    setTitleError(newTitle.trim() ? "" : "Product Name is required.");
+  };
 
-    if (!fileData || !imageFileRegex.test(fileData.type)) {
-      setImageError("Please upload a valid image file (PNG, JPEG, or GIF).");
-      isValid = false;
-    } else {
-      setImageError("");
-    }
-
-    return isValid;
+  const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newDescription = e.target.value;
+    setDescription(newDescription);
+    setDesError(newDescription.trim() ? "" : "Product Description is required.");
   };
 
   const submitPost = async () => {
     try {
-      if (!fileData || !validateForm()) return;
-
+      if (!fileData || !validateForm()){
+        alert("Please add product details..");
+        return;
+      }
       const url = await UploadFile(fileData);
       if (url) { 
         const response = await PostApi.postProduct({
@@ -97,27 +86,25 @@ const AddProductPage: React.FC = () => {
 
   return (
     <>
-      <Navbar />
       <div className="max-w-2xl mx-auto p-8 mt-8 bg-white rounded shadow">
         <h2 className="text-2xl font-semibold mb-6">Add Product</h2>
         <form onSubmit={handleFormSubmit}>
           <div className="mb-4">
             <label htmlFor="title" className="block font-medium">Product Name</label>
-            <input type="text" id="title" name="title" value={title} onChange={(e) => setTitle(e.target.value)} className="mt-1 p-2 w-full border rounded" />
+            <input type="text" id="title" name="title" value={title} onChange={handleTitleChange} className="mt-1 p-2 w-full border rounded" />
             {titleError && <p className="text-red-600">{titleError}</p>}
           </div>
           <div className="mb-4">
             <label htmlFor="tags" className="block font-medium">Tags</label>
-            <input type="text" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
-            {tagsError && <p className="text-red-600">{tagsError}</p>}
+            <input type="text" placeholder="(optional)" id="tag" name="tag" value={tag} onChange={(e) => setTags(e.target.value.split(","))} className="mt-1 p-2 w-full border rounded" />
           </div>
           <div className="mb-4">
             <label htmlFor="description" className="block font-medium">Description</label>
-            <textarea id="description" name="description" rows={3} value={description} onChange={(e) => setDescription(e.target.value)} className="mt-1 p-2 w-full border rounded" />
+            <textarea id="description" name="description" rows={3} value={description} onChange={handleDescriptionChange} className="mt-1 p-2 w-full border rounded" />
             {desError && <p className="text-red-600">{desError}</p>}
           </div>
           <div className="mb-4">
-            <ImageUploader setFileData={setFileData} />
+            <ImageUploader setFileData={setFileData} setImageError={setImageError} />
             {imageError && <p className="text-red-600">{imageError}</p>}
           </div>
           <div className="flex justify-end">

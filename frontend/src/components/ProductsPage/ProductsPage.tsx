@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/PostApi';
 import ProductCard from './ProductCard/ProductCard';
 import './ProductsPage.css';
-import Navbar from '../Navbar/Navbar';
-
 
 export interface IProduct {
   id: string;
@@ -29,7 +27,6 @@ function ProductsPage() {
 
   return (
     <>
-    <Navbar/>
     <div className='p-3'>
       <div className='text-xl mb-2'>
         <h1 className='px-4'>All products</h1>
