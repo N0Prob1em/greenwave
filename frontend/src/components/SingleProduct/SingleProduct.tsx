@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import ProductsApi from '../../api/PostApi';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export interface IProduct {
   id: string;
@@ -12,6 +13,8 @@ export interface IProduct {
 
 const SingleProduct = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
+
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -45,11 +48,14 @@ const SingleProduct = () => {
             <br />
             <p>{product?.description}</p>
             <br />
-            <Link to={{
-              pathname: '/contact',
-              search: `?productTitle=${product.title}&productDes=${product.description}`,
-            }}
-              className="bg-green-600 text-white px-4 py-2 rounded hover:bg-gray-600">Contact Now</Link>
+            {
+              isAuthenticated ? <Link to={{
+                pathname: '/contact',
+                search: `?productTitle=${product.title}&productDes=${product.description}`,
+              }}
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-gray-600">Contact Now</Link>
+             : <p>Log in to contact the owner</p>
+            }
           </div>
         </div>)}
     </>
