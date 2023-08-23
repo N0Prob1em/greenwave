@@ -26,11 +26,11 @@ const StyledAppBar = styled(AppBar)`
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
 
-  const destinationLoggedIn = ['', 'products', 'categories', 'about', 'add', 'contactus'];
-  const pagesLoggedIn = ['home', 'all products', 'categories', 'about us', 'add product', 'Contact Us'];
+  const destinationLoggedIn = ['', 'products', 'about', 'add', 'contactus'];
+  const pagesLoggedIn = ['home', 'all products', 'about us', 'add product', 'Contact Us'];
 
-  const destinationLoggedOut = ['', 'products', 'categories', 'about']
-  const pagesLoggedOut = ['home', 'all products', 'categories', 'about us'];
+  const destinationLoggedOut = ['', 'products', 'about', 'contactus']
+  const pagesLoggedOut = ['home', 'all products', 'about us', 'Contact Us'];
 
   const destination = isAuthenticated ? destinationLoggedIn : destinationLoggedOut;
   const pages = isAuthenticated ? pagesLoggedIn : pagesLoggedOut;
