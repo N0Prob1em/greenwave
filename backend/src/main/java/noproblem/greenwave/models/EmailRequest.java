@@ -1,8 +1,5 @@
 package noproblem.greenwave.models;
 
-import java.util.Date;
-import java.util.List;
-
 public class EmailRequest {
     private String to;
     private String subject;

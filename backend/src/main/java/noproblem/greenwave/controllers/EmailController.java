@@ -1,4 +1,4 @@
-package noproblem.greenwave.repositories;
+package noproblem.greenwave.controllers;
 
 import noproblem.greenwave.models.EmailConfig;
 import noproblem.greenwave.models.EmailRequest;
