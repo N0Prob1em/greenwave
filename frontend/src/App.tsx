@@ -7,12 +7,10 @@ import AddProduct from './components/AddProduct/AddProduct';
 import AboutUsPage from './components/AboutUs/AboutUsPage';
 import ContactUsForm from './components/ContactUs/ContactUsForm';
 import './App.css'
-import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from './components/Authentication/LoginButton';
+import ContactForm from './components/ContactUs/ContactUsForm';
 
 function App() {
 
-  const { isAuthenticated } = useAuth0();
 
   return (
     <>
@@ -25,8 +23,9 @@ function App() {
             <Route path="/products" element={<ProductsPage />} />
             <Route path="/product/:id" element={<SingleProduct />} />
             <Route path="/about" element={<AboutUsPage />} />
-            {isAuthenticated ? <Route path="/add" element={<AddProduct />} /> : <Route path="/add" element={<LoginButton />} />}
-            {isAuthenticated ? <Route path="/contactus" element={<ContactUsForm />} /> : <Route path="/contactus" element={<LoginButton />} />}
+            <Route path="/contact" element={<ContactForm />} />
+            <Route path="/add" element={<AddProduct />} />
+            <Route path="/contactus" element={<ContactUsForm />} />
           </Routes>
         </BrowserRouter>
         </div>

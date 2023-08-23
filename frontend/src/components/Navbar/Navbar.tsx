@@ -18,8 +18,6 @@ import LoginButton from '../Authentication/LoginButton';
 import UserProfile from '../Authentication/UserProfile';
 import { useAuth0 } from "@auth0/auth0-react";
 
-const destination = ['', 'products', 'categories', 'about', 'add', 'contactus']
-const pages = ['home', 'all products', 'categories', 'about us', 'add product', 'Contact Us'];
 
 const StyledAppBar = styled(AppBar)`
   background-color: #333333;
@@ -27,6 +25,15 @@ const StyledAppBar = styled(AppBar)`
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
+
+  const destinationLoggedIn = ['', 'products', 'about', 'add', 'contactus'];
+  const pagesLoggedIn = ['home', 'all products', 'about us', 'add product', 'Contact Us'];
+
+  const destinationLoggedOut = ['', 'products', 'about', 'contactus']
+  const pagesLoggedOut = ['home', 'all products', 'about us', 'Contact Us'];
+
+  const destination = isAuthenticated ? destinationLoggedIn : destinationLoggedOut;
+  const pages = isAuthenticated ? pagesLoggedIn : pagesLoggedOut;
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
