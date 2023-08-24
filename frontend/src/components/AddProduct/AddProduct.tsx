@@ -57,7 +57,7 @@ const AddProductPage: React.FC = () => {
   
         if (response) {
           alert("Added successfully..");
-          history.go(0);
+          history.go(-1);
         }
       }
     } catch (error) {
