@@ -5,9 +5,8 @@ import ProductsPage from './components/ProductsPage/ProductsPage'
 import SingleProduct from './components/SingleProduct/SingleProduct'
 import AddProduct from './components/AddProduct/AddProduct';
 import AboutUsPage from './components/AboutUs/AboutUsPage';
-import ContactUsForm from './components/ContactUs/ContactUsForm';
 import './App.css'
-import ContactForm from './components/ContactUs/ContactUsForm';
+import LogoutButton from './components/Authentication/LogoutButton';
 
 function App() {
 
@@ -21,11 +20,10 @@ function App() {
           <Routes>
             <Route path="/" element={<StartPage />} />
             <Route path="/products" element={<ProductsPage />} />
-            <Route path="/product/:id" element={<SingleProduct />} />
+            <Route path="/product/:id" element={<SingleProduct />}/>
             <Route path="/about" element={<AboutUsPage />} />
-            <Route path="/contact" element={<ContactForm />} />
             <Route path="/add" element={<AddProduct />} />
-            <Route path="/contactus" element={<ContactUsForm />} />
+            <Route path="/logout" element={<LogoutButton />} />
           </Routes>
         </BrowserRouter>
         </div>
