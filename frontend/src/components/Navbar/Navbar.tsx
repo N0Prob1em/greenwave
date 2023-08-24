@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './Navbar.css';
 import logo from '../../assets/images/logo-no-background.png';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,7 +14,7 @@ import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
-import UserProfile from '../Authentication/UserProfile';
+import UserProfile from '../Authentication/UserMenu';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -26,11 +25,11 @@ const StyledAppBar = styled(AppBar)`
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
 
-  const destinationLoggedIn = ['', 'products', 'about', 'add', 'contactus'];
-  const pagesLoggedIn = ['home', 'all products', 'about us', 'add product', 'Contact Us'];
+  const destinationLoggedIn = ['', 'products', 'about', 'add'];
+  const pagesLoggedIn = ['home', 'all products', 'about us', 'add product'];
 
-  const destinationLoggedOut = ['', 'products', 'about', 'contactus']
-  const pagesLoggedOut = ['home', 'all products', 'about us', 'Contact Us'];
+  const destinationLoggedOut = ['', 'products', 'about']
+  const pagesLoggedOut = ['home', 'all products', 'about us'];
 
   const destination = isAuthenticated ? destinationLoggedIn : destinationLoggedOut;
   const pages = isAuthenticated ? pagesLoggedIn : pagesLoggedOut;
@@ -134,14 +133,7 @@ const Navbar = () => {
                 </Link>
               ))}
             </Box>
-            <div>
-              {isAuthenticated && (<UserProfile />)}
-              {!isAuthenticated && (
-                <>
-                  <LoginButton />
-                </>
-              )}
-            </div>
+            {isAuthenticated ? <UserProfile /> : <LoginButton />}
           </Toolbar>
         </Container>
       </StyledAppBar>
