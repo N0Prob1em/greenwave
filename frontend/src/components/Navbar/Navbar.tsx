@@ -14,7 +14,7 @@ import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
-import UserProfile from '../Authentication/UserMenu';
+import UserMenu from '../Authentication/UserMenu';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
@@ -133,7 +133,7 @@ const Navbar = () => {
                 </Link>
               ))}
             </Box>
-            {isAuthenticated ? <UserProfile /> : <LoginButton />}
+            {isAuthenticated ? <UserMenu /> : <LoginButton />}
           </Toolbar>
         </Container>
       </StyledAppBar>

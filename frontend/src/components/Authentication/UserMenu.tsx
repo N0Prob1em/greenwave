@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const UserProfile = () => {
+const UserMenu = () => {
   const { user, isLoading } = useAuth0();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const destination = ['', 'products', 'logout']
@@ -66,4 +66,4 @@ const UserProfile = () => {
   );
 };
 
-export default UserProfile;
+export default UserMenu;
