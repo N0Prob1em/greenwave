@@ -10,7 +10,7 @@ export interface IProduct {
   dateAdded: string
 }
 
-function ProductsPage() {
+function AllProductsPage() {
   const initialProducts: IProduct[] = []
   const [products , setProducts] = useState(initialProducts);
 
@@ -39,4 +39,4 @@ function ProductsPage() {
   )
 }
 
-export default ProductsPage;
+export default AllProductsPage;

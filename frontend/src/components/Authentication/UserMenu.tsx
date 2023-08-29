@@ -29,7 +29,7 @@ const UserMenu = () => {
     <div>
       <div className="flex items-center space-x-4">
         <Box sx={{ flexGrow: 0 }}>
-          <Tooltip title="Open settings">
+          <Tooltip title="Open menu">
             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <img className="w-10 h-10 rounded-full" src={user?.picture} alt={user?.name} />
             </IconButton>

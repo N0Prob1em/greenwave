@@ -10,17 +10,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import { styled } from '@mui/system';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginButton from '../Authentication/LoginButton';
 import UserMenu from '../Authentication/UserMenu';
 import { useAuth0 } from "@auth0/auth0-react";
 
-
-const StyledAppBar = styled(AppBar)`
-  background-color: #333333;
-`;
 
 const Navbar = () => {
   const { isAuthenticated } = useAuth0();
@@ -46,7 +41,7 @@ const Navbar = () => {
 
   return (
     <>
-      <StyledAppBar position="sticky">
+      <AppBar position="sticky" sx={{backgroundColor: '#383434'}}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Link to={`/`}>
@@ -92,35 +87,35 @@ const Navbar = () => {
                 open={Boolean(anchorElNav)}
                 onClose={handleCloseNavMenu}
                 sx={{
-                  display: { xs: 'block', md: 'none' },
+                  display: { xs: 'block', md: 'none' }
                 }}
               >
                 {destination.map((dest, i) => (
                   <MenuItem key={dest} onClick={handleCloseNavMenu}>
-                    <Link to={`/${dest}`}><Typography textAlign="center">{pages[i]}</Typography></Link>
+                    <Link to={`/${dest}`}><Typography textAlign="center">{pages[i].charAt(0).toLocaleUpperCase() + pages[i].slice(1)}</Typography></Link>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              <img className='h-16 py-4' src={logo} alt="" />
+            <Link to={'/'}>
+              <Typography
+                variant="h5"
+                noWrap
+                sx={{
+                  mr: 2,
+                  display: { xs: 'flex', md: 'none' },
+                  flexGrow: 1,
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'inherit',
+                  textDecoration: 'none',
+                }}
+              >
+                <img className='h-16 py-4' src={logo} alt="" />
 
-            </Typography>
+              </Typography>
+            </Link>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {destination.map((dest, i) => (
                 <Link to={`/${dest}`} key={dest}>
@@ -136,7 +131,7 @@ const Navbar = () => {
             {isAuthenticated ? <UserMenu /> : <LoginButton />}
           </Toolbar>
         </Container>
-      </StyledAppBar>
+      </AppBar>
     </>
   )
 }
