@@ -39,10 +39,10 @@ const AddProductPage: React.FC = () => {
     setDesError(newDescription.trim() ? "" : "Product Description is required.");
   };
 
-  const submitPost = async () => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      if (!fileData || !validateForm()){
-        alert("Please add product details..");
+      if (!validateForm() || !fileData){
         return;
       }
       const url = await UploadFile(fileData);
@@ -63,12 +63,6 @@ const AddProductPage: React.FC = () => {
     } catch (error) {
       console.log(error);
     }
-  };  
-
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateForm()) return;
-    submitPost();
   };
 
   const UploadFile = async(fileData: File) => {

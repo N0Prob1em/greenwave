@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { styled } from '@mui/system';
 
 export interface IProduct {
   product: {
@@ -11,15 +10,6 @@ export interface IProduct {
     dateAdded: string
   }
 }
-
-const ViewButton = styled(Button)`
-  background-color: #7FC37E;
-  line-height: 0.75rem;
-  color: white;
-  &:hover {
-    background-color: #6a9f66;
-  }
-`;
 
 function ProductCard({ product }: IProduct) {
   
@@ -35,9 +25,10 @@ function ProductCard({ product }: IProduct) {
         </Link>
       </div>
       <div className="bg-[#383434] p-4 text-white h-30">
-      <Link to={'/product/' + product.id} className='font-bold text-2xl' >
-        {product.title}
-      </Link>
+        <Link to={'/product/' + product.id} className='font-bold text-2xl' >
+          {product.title}
+        </Link>
+        <br></br>
         <div className="group cursor-default relative inline-block border-b border-gray-400 w-50 my-4">
           <p className='line-clamp-2 '>{product.description}</p>
           <div className="opacity-0 w-50 bg-white text-black text-center text-s rounded-lg py-2 absolute z-10 group-hover:opacity-100 bottom-full -left-1/2 ml-36 px-3 pointer-events-none">
@@ -47,7 +38,7 @@ function ProductCard({ product }: IProduct) {
         </div>
         <div className='flex justify-between items-center'>
           <p>Posted by <b>Ariano</b></p>
-          <Link to={'/product/' + product.id}><ViewButton>View</ViewButton></Link>
+          <Link to={'/product/' + product.id}><Button sx={{ backgroundColor: '#7FC37E', color: 'white', lineHeight: 1.25, ":hover": { backgroundColor: '#6a9f66' } }}>View</Button></Link>
         </div>
       </div>
     </div>

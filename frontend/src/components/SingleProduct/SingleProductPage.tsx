@@ -9,7 +9,7 @@ export interface IProduct {
   dateAdded: string
 }
 
-const SingleProduct = () => {
+const SingleProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
 
   useEffect(() => {
@@ -41,6 +41,7 @@ const SingleProduct = () => {
           <div className="laptop:w-1/2">
             <p className="text-3xl font-bold">{product?.title}</p>
             <p>Posted by <b>Ariano</b></p>
+            <p>Date added: {product?.dateAdded}</p>
             <br />
             <p>{product?.description}</p>
             <br />
@@ -50,4 +51,4 @@ const SingleProduct = () => {
   )
 };
 
-export default SingleProduct;
+export default SingleProductPage;
