@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { styled } from '@mui/system';
+import { useProduct } from '../ProductContext';
 
 export interface IProduct {
   product: {
@@ -22,11 +23,16 @@ const ViewButton = styled(Button)`
 `;
 
 function ProductCard({ product }: IProduct) {
+  const { setProductId } = useProduct();
+
+  const handleProductClick = (productId: string) => {
+    setProductId(productId); // Set the product ID in the context
+  };
   
   return (
     <div className="max-w-xs mx-auto basic:w-full border-2 border-solid">
       <div>
-        <Link to={'/product/' + product.id} >
+        <Link to="/product" onClick={() => handleProductClick(product.id)} >
           <img
             className= 'object-contain h-48 w-96'
             src={product.imageUrl}
@@ -35,7 +41,7 @@ function ProductCard({ product }: IProduct) {
         </Link>
       </div>
       <div className="bg-[#383434] p-4 text-white h-30">
-      <Link to={'/product/' + product.id} className='font-bold text-2xl' >
+      <Link to="/product" onClick={() => handleProductClick(product.id)} className='font-bold text-2xl' >
         {product.title}
       </Link>
         <div className="group cursor-default relative inline-block border-b border-gray-400 w-50 my-4">
@@ -47,7 +53,7 @@ function ProductCard({ product }: IProduct) {
         </div>
         <div className='flex justify-between items-center'>
           <p>Posted by <b>Ariano</b></p>
-          <Link to={'/product/' + product.id}><ViewButton>View</ViewButton></Link>
+          <Link to="/product" onClick={() => handleProductClick(product.id)}><ViewButton>View</ViewButton></Link>
         </div>
       </div>
     </div>
