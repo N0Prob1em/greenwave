@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import ProductsApi from '../../api/PostApi';
 import ProductCard from '../ProductsPage/ProductCard/ProductCard';
-import { Button } from '@mui/material';
-import { styled } from '@mui/system';
 import { Link } from 'react-router-dom';
 import { useProduct } from '../ProductsPage/ProductContext';
+import { Button } from '@mui/material';
 
 export interface IProduct {
   id: string;
@@ -13,14 +12,6 @@ export interface IProduct {
   imageUrl: string
   dateAdded: string
 }
-
-const ViewButton = styled(Button)`
-  background-color: #7FC37E;
-  color: white;
-  &:hover {
-    background-color: #6a9f66;
-  }
-`;
 
 const StartPage = () => {
   const initialProducts: IProduct[] = []
@@ -69,13 +60,12 @@ const StartPage = () => {
             <br />
             <p>{randomProduct?.description}</p>
             <br />
-            <Link to="/product" onClick={() => handleProductClick(randomProduct?.id)}><ViewButton>View</ViewButton></Link>
+            <Link to="/product" onClick={() => handleProductClick(randomProduct?.id)}>
+              <Button sx={{ backgroundColor: '#7FC37E', color: 'white', lineHeight: 2, ":hover": { backgroundColor: '#6a9f66' } }}>View</Button>
+            </Link>
           </div>
-
         </div>
-
         <br />
-
         <div className="p-4">
           <p className="text-xl font-bold px-4 mb-2">Featured products</p>
           <div className='flex flex-wrap gap-4'>
@@ -83,7 +73,6 @@ const StartPage = () => {
           </div>
         </div>
       </div>
-      
     </>
   )
 }

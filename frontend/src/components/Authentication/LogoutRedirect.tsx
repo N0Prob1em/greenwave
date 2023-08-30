@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 
-const LogoutButton = () => {
+const LogoutRedirect = () => {
   const { logout } = useAuth0();
 
   logout({ 
@@ -12,4 +12,4 @@ const LogoutButton = () => {
   return <></>
 };
 
-export default LogoutButton;
+export default LogoutRedirect;

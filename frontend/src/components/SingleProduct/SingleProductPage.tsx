@@ -1,19 +1,9 @@
-import { Button } from '@mui/material';
-import { styled } from '@mui/system';
 import { useEffect, useState } from "react";
 import ProductsApi from '../../api/PostApi';
-import { IProduct } from "../ProductsPage/ProductsPage";
+import { IProduct } from "../ProductsPage/AllProductsPage";
 import { useProduct } from "../ProductsPage/ProductContext";
 
-const ViewButton = styled(Button)`
-  background-color: #7FC37E;
-  color: white;
-  &:hover {
-    background-color: #6a9f66;
-  }
-`;
-
-const SingleProduct = () => {
+const SingleProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
   const { productId } = useProduct();
 
@@ -41,17 +31,17 @@ const SingleProduct = () => {
           </div>
         </div>
 
-        <div className="laptop:w-1/2">
-          <p className="text-3xl font-bold">{product?.title}</p>
-          <p>Posted by <b>Ariano</b></p>
-          <br />
-          <p>{product?.description}</p>
-          <br />
-          <ViewButton>Contact now</ViewButton>
+          <div className="laptop:w-1/2">
+            <p className="text-3xl font-bold">{product?.title}</p>
+            <p>Posted by <b>Ariano</b></p>
+            <p>Date added: {product?.dateAdded}</p>
+            <br />
+            <p>{product?.description}</p>
+            <br />
+          </div>
         </div>
-      </div>
     </>
   )
 };
 
-export default SingleProduct;
+export default SingleProductPage;

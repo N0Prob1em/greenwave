@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
-import { styled } from '@mui/system';
 import { useProduct } from '../ProductContext';
 
 export interface IProduct {
@@ -12,15 +11,6 @@ export interface IProduct {
     dateAdded: string
   }
 }
-
-const ViewButton = styled(Button)`
-  background-color: #7FC37E;
-  line-height: 0.75rem;
-  color: white;
-  &:hover {
-    background-color: #6a9f66;
-  }
-`;
 
 function ProductCard({ product }: IProduct) {
   const { setProductId } = useProduct();
@@ -53,7 +43,9 @@ function ProductCard({ product }: IProduct) {
         </div>
         <div className='flex justify-between items-center'>
           <p>Posted by <b>Ariano</b></p>
-          <Link to="/product" onClick={() => handleProductClick(product.id)}><ViewButton>View</ViewButton></Link>
+          <Link to="/product" onClick={() => handleProductClick(product.id)}>
+          <Button sx={{ backgroundColor: '#7FC37E', color: 'white', lineHeight: 1.25, ":hover": { backgroundColor: '#6a9f66' } }}>View</Button>
+          </Link>
         </div>
       </div>
     </div>
