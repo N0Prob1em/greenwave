@@ -23,6 +23,7 @@ function AllProductsPage() {
   }, []);
 
   const productList = products.map(product => <ProductCard key={product.id} product={product} />);
+  console.log(window.location.origin + window.location.pathname);
 
   return (
     <>
